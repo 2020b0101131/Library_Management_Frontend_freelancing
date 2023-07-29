@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import { NavLink,useNavigate } from "react-router-dom";
 import { loginUser } from "../service/Api.jsx";
-
+import logo from "../img/logo_interview.jpg"
 const Login = () => {
   const navigate=useNavigate();
   const [email,setEmail]=useState();
@@ -24,9 +24,29 @@ const Login = () => {
 }
   return (
     
-    <div className="container d-flex justify-content-center  ">
-      
-      <div className="row border border-secondary card w-sm-50  ">
+    <div className="container d-flex justify-content-center mb-5 ">
+    
+    <nav style={{backgroundColor: '#000000'}} className="navbar navbar-expand-lg  fixed-top  " id="mainNav">
+    <div className="container ">
+    <a className="navbar-brand " href="#page-top"><img style={{height:'40px'}}src={logo} alt="logo" /></a>
+      <button className="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i className="fas fa-bars ms-1" />
+      </button>
+      <div className="collapse navbar-collapse" id="navbarResponsive">
+        <ul className="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+          <li className="nav-item"><a className="nav-link" href="#services">BRAND</a></li>
+          {/* <li className="nav-item"><a className="nav-link" href="#portfolio">Portfolio</a></li>
+          <li className="nav-item"><a className="nav-link" href="#about">About</a></li>
+          <li className="nav-item"><a className="nav-link" href="#team">Team</a></li>
+          <li className="nav-item"><a className="nav-link" href="#contact">Contact</a></li> */}
+          <li className="nav-item"><NavLink className="nav-link" to="/">Home</NavLink></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+     
+      <div className="row border border-secondary card w-sm-50 mt-5 ">
         <div className="border border-primary ">
           {/* Pills navs */}
           <ul

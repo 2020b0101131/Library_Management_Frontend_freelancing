@@ -1,9 +1,9 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-const Backend = () => {
+const Java = () => {
   return (
     <div className="container   ">
-       <h1 >Common Backend Interview Questions and Answers</h1>
+       <h1 >Common Java Interview Questions and Answers</h1>
       <div class="card mt-5 w-50">
         <div class="card-body">
          
@@ -16,7 +16,7 @@ const Backend = () => {
             defaultValue
             aria-label="..."
           />
-          What is an example of when you would use caching?
+          What is the difference between final, finally, and finalize in Java?
         </li>
         <li className="list-group-item">
           {" "}
@@ -26,7 +26,7 @@ const Backend = () => {
             defaultValue
             aria-label="..."
           />
-          How would you select a cache strategy (e.g., LRU, FIFO)?
+          Explain the concept of Object-Oriented Programming (OOP) in Java.
         </li>
         <li className="list-group-item">
           {" "}
@@ -36,7 +36,7 @@ const Backend = () => {
             defaultValue
             aria-label="..."
           />
-          What are some common issues with ORMs?
+          What are the differences between ArrayList and LinkedList in Java?
         </li>
         <li className="list-group-item">
           {" "}
@@ -46,7 +46,7 @@ const Backend = () => {
             defaultValue
             aria-label="..."
           />
-          When should you use asynchronous programming?
+          What is method overloading in Java?
         </li>
         <li className="list-group-item">
           {" "}
@@ -56,7 +56,7 @@ const Backend = () => {
             defaultValue
             aria-label="..."
           />
-          What is the difference between promises and callbacks?
+          Explain the static keyword in Java.
         </li>
         <li className="list-group-item">
           {" "}
@@ -66,7 +66,7 @@ const Backend = () => {
             defaultValue
             aria-label="..."
           />
-          What is closure?
+          What is the Java equals() method used for?
         </li>
         <li className="list-group-item">
           {" "}
@@ -76,7 +76,7 @@ const Backend = () => {
             defaultValue
             aria-label="..."
           />
-          What is the difference between a Class and an Interface in Java?
+          What is the difference between StringBuilder and StringBuffer in Java?
         </li>
         <li className="list-group-item">
           {" "}
@@ -86,7 +86,7 @@ const Backend = () => {
             defaultValue
             aria-label="..."
           />
-          What is continuous integration?
+          Explain the try-with-resources statement in Java.
         </li>
         <li className="list-group-item">
           {" "}
@@ -96,7 +96,7 @@ const Backend = () => {
             defaultValue
             aria-label="..."
           />
-          What is a software development kit (SDK)?
+          What is the purpose of Java annotations?
         </li>
         <li className="list-group-item">
           {" "}
@@ -106,17 +106,18 @@ const Backend = () => {
             defaultValue
             aria-label="..."
           />
-          What are the tradeoffs of client-side rendering vs. server-side
-          rendering?
+          What is the difference between throw and throws in Java?
         </li>
       </ol>
         </div>
       </div>
 {/* ////////////////////////////////////////////////////////////////////// */}
 {/* ///////////////////////////////////////////////////////////////////////////// */}
+
+
      
     </div>
   );
 };
 
-export default Backend;
+export default Java;

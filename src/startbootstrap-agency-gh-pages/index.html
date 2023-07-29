@@ -1,19 +1,22 @@
-import React from 'react'
-import { NavLink } from "react-router-dom";
-import int0 from '../img/int0.jpg';
-import int00 from '../img/int00.jpg';
-import int1 from '../img/int1.jpg';
-import int4 from '../img/int4.jpg';
-import logo from "../img/logo_interview.jpg"
-import "../startbootstrap-agency-gh-pages/css/styles.css"
-
-const LandingPage = () => {
-  return (
-    <div className='container'>
-  <nav style={{backgroundColor: '#000000'}} className="navbar navbar-expand-lg  fixed-top  " id="mainNav">
+<div>
+  <meta charSet="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content />
+  <meta name="author" content />
+  <title>Agency - Start Bootstrap Theme</title>
+  {/* Favicon*/}
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  {/* Font Awesome icons (free version)*/}
+  {/* Google fonts*/}
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+  {/* Core theme CSS (includes Bootstrap)*/}
+  <link href="css/styles.css" rel="stylesheet" />
+  {/* Navigation*/}
+  <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div className="container">
-      <a className="navbar-brand " href="#page-top"><img style={{height:'40px'}}src={logo} alt="logo" /></a>
-      <button className="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <a className="navbar-brand" href="#page-top"><img src="assets/img/navbar-logo.svg" alt="..." /></a>
+      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i className="fas fa-bars ms-1" />
       </button>
@@ -24,7 +27,6 @@ const LandingPage = () => {
           <li className="nav-item"><a className="nav-link" href="#about">About</a></li>
           <li className="nav-item"><a className="nav-link" href="#team">Team</a></li>
           <li className="nav-item"><a className="nav-link" href="#contact">Contact</a></li>
-          <li className="nav-item"><NavLink className="nav-link" to="/login">Login</NavLink></li>
         </ul>
       </div>
     </div>
@@ -597,9 +599,3 @@ const LandingPage = () => {
   {/* * * Activate your form at https://startbootstrap.com/solution/contact-forms * **/}
   {/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/}
 </div>
-
-
-
-  )
-}
-export default LandingPage

@@ -1,9 +1,9 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-const Backend = () => {
+const WebDev = () => {
   return (
     <div className="container   ">
-       <h1 >Common Backend Interview Questions and Answers</h1>
+       <h1 >Common Web Development Interview Questions and Answers</h1>
       <div class="card mt-5 w-50">
         <div class="card-body">
          
@@ -16,7 +16,7 @@ const Backend = () => {
             defaultValue
             aria-label="..."
           />
-          What is an example of when you would use caching?
+          What is the difference between HTTP and HTTPS?
         </li>
         <li className="list-group-item">
           {" "}
@@ -26,7 +26,7 @@ const Backend = () => {
             defaultValue
             aria-label="..."
           />
-          How would you select a cache strategy (e.g., LRU, FIFO)?
+          What is the purpose of the 'DOCTYPE' declaration in HTML?
         </li>
         <li className="list-group-item">
           {" "}
@@ -36,7 +36,7 @@ const Backend = () => {
             defaultValue
             aria-label="..."
           />
-          What are some common issues with ORMs?
+          What is the difference between 'localStorage' and 'sessionStorage'.
         </li>
         <li className="list-group-item">
           {" "}
@@ -46,7 +46,7 @@ const Backend = () => {
             defaultValue
             aria-label="..."
           />
-          When should you use asynchronous programming?
+          What is a RESTful API?
         </li>
         <li className="list-group-item">
           {" "}
@@ -56,7 +56,7 @@ const Backend = () => {
             defaultValue
             aria-label="..."
           />
-          What is the difference between promises and callbacks?
+          What is the purpose of Cross-Origin Resource Sharing (CORS) in web development?
         </li>
         <li className="list-group-item">
           {" "}
@@ -66,7 +66,7 @@ const Backend = () => {
             defaultValue
             aria-label="..."
           />
-          What is closure?
+          Explain the concept of a responsive web design.
         </li>
         <li className="list-group-item">
           {" "}
@@ -76,7 +76,7 @@ const Backend = () => {
             defaultValue
             aria-label="..."
           />
-          What is the difference between a Class and an Interface in Java?
+          What is the purpose of a CSS preprocessor like Sass or Less?
         </li>
         <li className="list-group-item">
           {" "}
@@ -86,7 +86,7 @@ const Backend = () => {
             defaultValue
             aria-label="..."
           />
-          What is continuous integration?
+          What are the main differences between a PUT request and a POST request in HTTP?
         </li>
         <li className="list-group-item">
           {" "}
@@ -96,7 +96,7 @@ const Backend = () => {
             defaultValue
             aria-label="..."
           />
-          What is a software development kit (SDK)?
+          What is the Document Object Model (DOM) in web development?
         </li>
         <li className="list-group-item">
           {" "}
@@ -106,8 +106,7 @@ const Backend = () => {
             defaultValue
             aria-label="..."
           />
-          What are the tradeoffs of client-side rendering vs. server-side
-          rendering?
+          What are some methods to optimize website performance?
         </li>
       </ol>
         </div>
@@ -119,4 +118,4 @@ const Backend = () => {
   );
 };
 
-export default Backend;
+export default WebDev;
