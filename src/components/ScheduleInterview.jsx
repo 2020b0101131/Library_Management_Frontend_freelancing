@@ -6,7 +6,8 @@ const ScheduleInterview = () => {
     const [value,setValue]=useState();
     const navigate=useNavigate();
    
-    const handleJoinRoom=useCallback(()=>{
+    const handleJoinRoom=useCallback((e)=>{
+      e.preventDefault();
     navigate(`/room/${value}`)
     },[navigate,value])
   return (

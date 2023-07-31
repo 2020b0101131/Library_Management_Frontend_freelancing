@@ -20,10 +20,6 @@ import Java from "./components/Java";
 import Python from "./components/Python";
 
 
-
-
-
-
 function App() {
   return (
     <div className="App">
