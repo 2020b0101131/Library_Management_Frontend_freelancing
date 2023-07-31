@@ -20,7 +20,7 @@ const MeetingRoom = () => {
         {
           name: "Copy link",
           // url: `http://localhost:3000/room/${roomId}`,
-          url: `${process.env.REACT_APP_URLL}room/${roomId}`,
+          url: `${process.env.REACT_APP_URLL}/room/${roomId}`,
         },
       ],
       scenario: {
