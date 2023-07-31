@@ -13,7 +13,7 @@ const Login = () => {
       const backend_response=await loginUser({email,password});
       alert(backend_response.data.message);
       if((backend_response.data.message)==="Login Successful"){
-        navigate("/");
+        navigate("/codeforuser");
       }
      
 
