@@ -20,7 +20,7 @@ const LandingPage = () => {
       <div className="collapse navbar-collapse" id="navbarResponsive">
         <ul className="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
           <li className="nav-item"><a className="nav-link" href="#services">Services</a></li>
-          <li className="nav-item"><a className="nav-link" href="#portfolio">Portfolio</a></li>
+          <li className="nav-item"><a className="nav-link" href="#portfolio">Features</a></li>
           <li className="nav-item"><a className="nav-link" href="#about">About</a></li>
           <li className="nav-item"><a className="nav-link" href="#team">Team</a></li>
           <li className="nav-item"><a className="nav-link" href="#contact">Contact</a></li>
@@ -81,8 +81,8 @@ const LandingPage = () => {
   <section className="page-section bg-light" id="portfolio">
     <div className="container">
       <div className="text-center">
-        <h2 className="section-heading text-uppercase">Portfolio</h2>
-        <h3 className="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        <h2 className="section-heading text-uppercase">Features at Glance</h2>
+        <h3 className="section-subheading text-muted">Efficient. Intuitive. Powering Your Hiring Process.</h3>
       </div>
       <div className="row">
         <div className="col-lg-4 col-sm-6 mb-4">
@@ -240,7 +240,7 @@ const LandingPage = () => {
       </ul>
     </div>
   </section>
-  {/* Team*/}
+  {/* Team
   <section className="page-section bg-light" id="team">
     <div className="container">
       <div className="text-center">
@@ -283,7 +283,7 @@ const LandingPage = () => {
         <div className="col-lg-8 mx-auto text-center"><p className="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div>
       </div>
     </div>
-  </section>
+  </section> */}
   {/* Clients*/}
   <div className="py-5">
     <div className="container">

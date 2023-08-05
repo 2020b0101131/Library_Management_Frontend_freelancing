@@ -4,6 +4,7 @@ const URL = process.env.REACT_APP_URL;
 ///////////////////////////////////////////////////////////////
 export const addUser = async (data) => {
   try {
+    
     return await axios.post(`${URL}/adduser`, data);
   } catch (error) {
     console.log("Error in addUser", error);

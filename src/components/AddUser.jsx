@@ -11,6 +11,7 @@ margin:5% auto;
 `
 
 const defaultValue={
+  '_id':'',
   'name':'',
   'username':'',
   'email':'',
@@ -23,11 +24,12 @@ const AddUser = () => {
   const [user,setUser]=useState(defaultValue);
   /////////////////////////////////////////////////
   const onValueChange=(e)=>{
-    console.log("Yug:",e);
   setUser({...user,[e.target.name]:e.target.value})
+
   }
   ////////////////////////////////////////////////
   const AddUserDetails=async()=>{
+    // console.log(user);
 await addUser(user);
 navigate('/allusers');
 
@@ -39,6 +41,10 @@ navigate('/allusers');
      
         <Container>
           <Typography variant='h4'>ADD USER</Typography>
+          <FormControl>
+            <InputLabel>Id</InputLabel>
+            <Input onChange={(e)=>onValueChange(e)} name="_id"/>
+          </FormControl>
           <FormControl>
             <InputLabel>Name</InputLabel>
             <Input onChange={(e)=>onValueChange(e)}name="name"/>
