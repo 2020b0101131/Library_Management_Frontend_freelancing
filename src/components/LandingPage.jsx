@@ -29,6 +29,8 @@ const LandingPage = () => {
       </div>
     </div>
   </nav>
+  <marquee  id="gfg" style={{backgroundColor:'yellow',width:"70%"}}><b>Kindly Login to explore all the features as they are ready to use. Our team is currently working on the landing page.</b></marquee>
+
   {/* Masthead*/}
   <header className="masthead">
     <div className="container">
@@ -48,25 +50,27 @@ const LandingPage = () => {
         <div className="col-md-4">
           <span className="fa-stack fa-4x">
             <i className="fas fa-circle fa-stack-2x text-primary" />
-            <i className="fas fa-shopping-cart fa-stack-1x fa-inverse" />
+            <i className="fa fa-list-ol fa-stack-1x fa-inverse" />
           </span>
-          <h4 className="my-3">E-Commerce</h4>
-          <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+          <h4 className="my-3">Get & Create Questionnaire</h4>
+          <p className="text-muted">This service allows interviewers to access pre-existing questionnaires or create new ones tailored to specific interview requirements. It can save time and ensure consistency in the interview process.</p>
         </div>
         <div className="col-md-4">
           <span className="fa-stack fa-4x">
             <i className="fas fa-circle fa-stack-2x text-primary" />
             <i className="fas fa-laptop fa-stack-1x fa-inverse" />
           </span>
-          <h4 className="my-3">Responsive Design</h4>
-          <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+          <h4 className="my-3">Schedule Interview</h4>
+          <p className="text-muted">This service provides a platform for interviewers to schedule interviews with potential candidates. It include features like automated email notifications, calendar integration, and candidate availability tracking to simplify the scheduling process.</p>
         </div>
+       
+        
         <div className="col-md-4">
           <span className="fa-stack fa-4x">
             <i className="fas fa-circle fa-stack-2x text-primary" />
-            <i className="fas fa-lock fa-stack-1x fa-inverse" />
+            <i className="fa fa-address-book-o fa-stack-1x fa-inverse" />
           </span>
-          <h4 className="my-3">Web Security</h4>
+          <h4 className="my-3">List the Interviewee</h4>
           <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
         </div>
       </div>
