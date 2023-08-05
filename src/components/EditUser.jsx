@@ -20,10 +20,12 @@ const Container = styled(FormGroup)`
 `;
 
 const defaultValue = {
+  _id: "",
   name: "",
-  username: "",
   email: "",
   phone: "",
+  date: "",
+  status: "",
 };
 
 const AddUser = () => {
@@ -56,21 +58,29 @@ const AddUser = () => {
       <Container>
         <Typography variant="h4">EDIT USER</Typography>
         <FormControl>
+          <InputLabel>ID</InputLabel>
+          <Input onChange={(e) => onValueChange(e)} name="_id" value={user._id} />
+        </FormControl>
+        <FormControl>
           <InputLabel>Name</InputLabel>
           <Input onChange={(e) => onValueChange(e)} name="name" value={user.name} />
         </FormControl>
         <FormControl>
-          <InputLabel>Username</InputLabel>
-          <Input onChange={(e) => onValueChange(e)} name="username" value={user.username}/>
-        </FormControl>
-
-        <FormControl>
           <InputLabel>Email</InputLabel>
           <Input onChange={(e) => onValueChange(e)} name="email" value={user.email}/>
         </FormControl>
+
         <FormControl>
           <InputLabel>Phone</InputLabel>
-          <Input onChange={(e) => onValueChange(e)} name="phone"value={user.phone} />
+          <Input onChange={(e) => onValueChange(e)} name="phone" value={user.phone}/>
+        </FormControl>
+        <FormControl>
+          <InputLabel>Date/Time</InputLabel>
+          <Input onChange={(e) => onValueChange(e)} name="date"value={user.date} />
+        </FormControl>
+        <FormControl>
+          <InputLabel>Status</InputLabel>
+          <Input onChange={(e) => onValueChange(e)} name="status"value={user.status} />
         </FormControl>
         <FormControl>
           <Button variant="contained" onClick={() => EditUserDetails()}>

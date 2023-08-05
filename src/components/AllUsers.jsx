@@ -54,10 +54,11 @@ const AllUsers = () => {
         <THead>
           <TableCell>Id</TableCell>
           <TableCell>Name</TableCell>
-          <TableCell>UserName</TableCell>
           <TableCell>Email</TableCell>
           <TableCell>Phone</TableCell>
-          <TableCell>Phone</TableCell>
+          <TableCell>Date/Time</TableCell>
+          <TableCell>Status</TableCell>
+          <TableCell>Edit/Delete</TableCell>
         </THead>
       </TableHead>
       <TableBody>
@@ -65,9 +66,10 @@ const AllUsers = () => {
           <TBody>
             <TableCell>{user._id}</TableCell>
             <TableCell>{user.name}</TableCell>
-            <TableCell>{user.username}</TableCell>
             <TableCell>{user.email}</TableCell>
             <TableCell>{user.phone}</TableCell>
+            <TableCell>{user.date}</TableCell>
+            <TableCell>{user.status}</TableCell>
             <TableCell>
               <Button
                 variant="contained"
