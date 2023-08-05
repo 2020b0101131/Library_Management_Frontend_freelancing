@@ -30,7 +30,7 @@ const LandingPage = () => {
     </div>
   </nav>
  
-  <marquee className="fixed-top "id="gfg" style={{backgroundColor:'yellow',marginTop: '5rem'}}><b>Kindly Login to explore all the features. Our team is currently working on the landing page and some other parts of this project.</b></marquee>
+  <marquee className="fixed-top "id="gfg" style={{backgroundColor:'yellow',marginTop: '5rem'}}><b>Kindly login to view & explore all the features of this project. The project is under progress.</b></marquee>
 
   {/* Masthead*/}
   <header className="masthead">
