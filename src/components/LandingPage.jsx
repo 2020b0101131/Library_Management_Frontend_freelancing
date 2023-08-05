@@ -13,7 +13,7 @@ const LandingPage = () => {
   <nav style={{backgroundColor: '#000000'}} className="navbar navbar-expand-lg  fixed-top  " id="mainNav">
     <div className="container">
       <a className="navbar-brand " href="#page-top"><img style={{height:'40px'}}src={logo} alt="logo" /></a>
-      <button className="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <button className="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i className="fas fa-bars ms-1" />
       </button>
@@ -29,7 +29,8 @@ const LandingPage = () => {
       </div>
     </div>
   </nav>
-  <marquee  id="gfg" style={{backgroundColor:'yellow',width:"70%"}}><b>Kindly Login to explore all the features as they are ready to use. Our team is currently working on the landing page.</b></marquee>
+ 
+  <marquee className="fixed-top "id="gfg" style={{backgroundColor:'yellow',marginTop: '6rem'}}><b>Kindly Login to explore all the features. Our team is currently working on the landing page and some other parts of this project.</b></marquee>
 
   {/* Masthead*/}
   <header className="masthead">
@@ -44,7 +45,7 @@ const LandingPage = () => {
     <div className="container">
       <div className="text-center">
         <h2 className="section-heading text-uppercase">Services</h2>
-        <h3 className="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        <h3 className="section-subheading text-muted">Unlock Talent. Simplify Hiring. InterviewG Delivers.</h3>
       </div>
       <div className="row text-center">
         <div className="col-md-4">
@@ -53,7 +54,7 @@ const LandingPage = () => {
             <i className="fa fa-list-ol fa-stack-1x fa-inverse" />
           </span>
           <h4 className="my-3">Get & Create Questionnaire</h4>
-          <p className="text-muted">This service allows interviewers to access pre-existing questionnaires or create new ones tailored to specific interview requirements. It can save time and ensure consistency in the interview process.</p>
+          <p className="text-muted">Craft tailored interview experiences with ease! Access a vast library of questions or customize your own to find the perfect fit.</p>
         </div>
         <div className="col-md-4">
           <span className="fa-stack fa-4x">
@@ -61,7 +62,7 @@ const LandingPage = () => {
             <i className="fas fa-laptop fa-stack-1x fa-inverse" />
           </span>
           <h4 className="my-3">Schedule Interview</h4>
-          <p className="text-muted">This service provides a platform for interviewers to schedule interviews with potential candidates. It include features like automated email notifications, calendar integration, and candidate availability tracking to simplify the scheduling process.</p>
+          <p className="text-muted">Effortlessly streamline your hiring process with our intuitive scheduling tool. Coordinate interviews, sync calendars, and never miss a candidate again!</p>
         </div>
        
         
@@ -71,7 +72,7 @@ const LandingPage = () => {
             <i className="fa fa-address-book-o fa-stack-1x fa-inverse" />
           </span>
           <h4 className="my-3">List the Interviewee</h4>
-          <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+          <p className="text-muted">Centralize your candidate database. Keep track of applicants, manage profiles, and make informed decisions backed by organized data.</p>
         </div>
       </div>
     </div>
