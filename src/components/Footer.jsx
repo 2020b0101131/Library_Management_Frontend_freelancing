@@ -71,10 +71,7 @@ const Footer = () => {
         <div className="row d-flex justify-content-center">
           <div className="col-lg-8">
             <p>
-              Saransh ipsum dolor sit amet consectetur adipisicing elit. Sunt
-              distinctio earum repellat quaerat voluptatibus placeat nam,
-              commodi optio pariatur est quia magnam eum harum corrupti
-              dicta, aliquam sequi voluptate quas.
+            InterviewG envisions a world where hiring is seamless and insightful. Our mission is to empower interviewers with innovative tools, fostering better connections and unlocking the potential of talent.
             </p>
           </div>
         </div>
@@ -106,8 +103,9 @@ const Footer = () => {
     {/* Grid container */}
     {/* Copyright */}
     <div className="text-center p-3" style={{backgroundColor: 'rgba(0, 0, 0, 0.2)'}}>
-      © 2020 Copyright:
-      <a className="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    Copyright © InterviewG 2022
+      
+      
     </div>
     {/* Copyright */}
   </footer>

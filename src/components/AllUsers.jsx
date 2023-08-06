@@ -48,8 +48,16 @@ const AllUsers = () => {
     let response = await getUsers();
     setUsers(response.data);
   };
+  ///////////////////////////////////////////////
+  const Print=()=>{
+    
+    window.print();
+};
+
+  //////////////////////////////////////////////
   return (
     <StyledTable>
+     <button classname="print" onClick={()=>Print()}>PRINT</button>
       <TableHead>
         <THead>
           <TableCell>Id</TableCell>

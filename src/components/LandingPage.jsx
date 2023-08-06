@@ -5,6 +5,14 @@ import int00 from '../img/int00.jpg';
 import int1 from '../img/int1.jpg';
 import int4 from '../img/int4.jpg';
 import logo from "../img/logo_interview.jpg"
+import begining from "../img/begining.jpg"
+import agency from "../img/agency.png"
+import cand_evalution from "../img/cand_evaluation.png"
+import communication_tool from "../img/communication_tool.jpeg"
+import interview_recording from "../img/interview_recording.jpeg"
+import analytics_reporting from "../img/analytics_reporting.jpeg"
+import skill_testing from "../img/skill_testing.png"
+import interview_collaboration from "../img/interview_collaboration.jpeg"
 import "../startbootstrap-agency-gh-pages/css/styles.css"
 
 const LandingPage = () => {
@@ -30,7 +38,7 @@ const LandingPage = () => {
     </div>
   </nav>
  
-  <marquee className="fixed-top "id="gfg" style={{backgroundColor:'yellow',marginTop: '5rem'}}><b>Kindly login to view & explore all the features of this project. The project is under progress.</b></marquee>
+  <marquee className="fixed-top "id="gfg" style={{backgroundColor:'yellow',marginTop: '5rem'}}><b>Kindly login to view & explore all the features of this website. The website is in progress.</b></marquee>
 
   {/* Masthead*/}
   <header className="masthead">
@@ -53,7 +61,7 @@ const LandingPage = () => {
             <i className="fas fa-circle fa-stack-2x text-primary" />
             <i className="fa fa-list-ol fa-stack-1x fa-inverse" />
           </span>
-          <h4 className="my-3">Get & Create Questionnaire</h4>
+          <h4 className="my-3">Questionnaire Management</h4>
           <p className="text-muted">Craft tailored interview experiences with ease! Access a vast library of questions or customize your own to find the perfect fit.</p>
         </div>
         <div className="col-md-4">
@@ -71,7 +79,7 @@ const LandingPage = () => {
             <i className="fas fa-circle fa-stack-2x text-primary" />
             <i className="fa fa-address-book-o fa-stack-1x fa-inverse" />
           </span>
-          <h4 className="my-3">List the Interviewee</h4>
+          <h4 className="my-3">Interviewee Management</h4>
           <p className="text-muted">Centralize your candidate database. Keep track of applicants, manage profiles, and make informed decisions backed by organized data.</p>
         </div>
       </div>
@@ -92,11 +100,11 @@ const LandingPage = () => {
               <div className="portfolio-hover">
                 <div className="portfolio-hover-content"><i className="fas fa-plus fa-3x" /></div>
               </div>
-              <img className="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." />
+              <img className="img-fluid" src={cand_evalution} alt="..." />
             </a>
             <div className="portfolio-caption">
-              <div className="portfolio-caption-heading">Threads</div>
-              <div className="portfolio-caption-subheading text-muted">Illustration</div>
+              <div className="portfolio-caption-heading">Candidate Evaluation</div>
+              <div className="portfolio-caption-subheading text-muted">Tools to rate and evaluate candidates based on various criteria.</div>
             </div>
           </div>
         </div>
@@ -107,11 +115,11 @@ const LandingPage = () => {
               <div className="portfolio-hover">
                 <div className="portfolio-hover-content"><i className="fas fa-plus fa-3x" /></div>
               </div>
-              <img className="img-fluid" src="assets/img/portfolio/2.jpg" alt="..." />
+              <img className="img-fluid" src={communication_tool} alt="..." />
             </a>
             <div className="portfolio-caption">
-              <div className="portfolio-caption-heading">Explore</div>
-              <div className="portfolio-caption-subheading text-muted">Graphic Design</div>
+              <div className="portfolio-caption-heading">Communication Tools</div>
+              <div className="portfolio-caption-subheading text-muted">Integrated email or messaging systems for interviewer-candidate communication.</div>
             </div>
           </div>
         </div>
@@ -122,11 +130,11 @@ const LandingPage = () => {
               <div className="portfolio-hover">
                 <div className="portfolio-hover-content"><i className="fas fa-plus fa-3x" /></div>
               </div>
-              <img className="img-fluid" src="assets/img/portfolio/3.jpg" alt="..." />
+            <img className="img-fluid" src={interview_recording}alt="..." />
             </a>
             <div className="portfolio-caption">
-              <div className="portfolio-caption-heading">Finish</div>
-              <div className="portfolio-caption-subheading text-muted">Identity</div>
+              <div className="portfolio-caption-heading">Interview Recording</div>
+              <div className="portfolio-caption-subheading text-muted">Capability to record and review interviews for later assessment.</div>
             </div>
           </div>
         </div>
@@ -137,11 +145,11 @@ const LandingPage = () => {
               <div className="portfolio-hover">
                 <div className="portfolio-hover-content"><i className="fas fa-plus fa-3x" /></div>
               </div>
-              <img className="img-fluid" src="assets/img/portfolio/4.jpg" alt="..." />
+              <img className="img-fluid" src={analytics_reporting} alt="..." />
             </a>
             <div className="portfolio-caption">
-              <div className="portfolio-caption-heading">Lines</div>
-              <div className="portfolio-caption-subheading text-muted">Branding</div>
+              <div className="portfolio-caption-heading">Analytics and Reporting</div>
+              <div className="portfolio-caption-subheading text-muted">Data-driven insights on interview performance and candidate metrics.</div>
             </div>
           </div>
         </div>
@@ -152,11 +160,11 @@ const LandingPage = () => {
               <div className="portfolio-hover">
                 <div className="portfolio-hover-content"><i className="fas fa-plus fa-3x" /></div>
               </div>
-              <img className="img-fluid" src="assets/img/portfolio/5.jpg" alt="..." />
+              <img className="img-fluid" src={skill_testing} alt="..." />
             </a>
             <div className="portfolio-caption">
-              <div className="portfolio-caption-heading">Southwest</div>
-              <div className="portfolio-caption-subheading text-muted">Website Design</div>
+              <div className="portfolio-caption-heading">Skill Testing</div>
+              <div className="portfolio-caption-subheading text-muted">Integration of skill assessments to evaluate candidate abilities</div>
             </div>
           </div>
         </div>
@@ -167,11 +175,11 @@ const LandingPage = () => {
               <div className="portfolio-hover">
                 <div className="portfolio-hover-content"><i className="fas fa-plus fa-3x" /></div>
               </div>
-              <img className="img-fluid" src="assets/img/portfolio/6.jpg" alt="..." />
+              <img className="img-fluid" src={interview_collaboration} alt="..." />
             </a>
             <div className="portfolio-caption">
-              <div className="portfolio-caption-heading">Window</div>
-              <div className="portfolio-caption-subheading text-muted">Photography</div>
+              <div className="portfolio-caption-heading">Interviewer Collaboration</div>
+              <div className="portfolio-caption-subheading text-muted">Features that enable multiple interviewers to collaborate and share feedback.</div>
             </div>
           </div>
         </div>
@@ -183,30 +191,30 @@ const LandingPage = () => {
     <div className="container">
       <div className="text-center">
         <h2 className="section-heading text-uppercase">About</h2>
-        <h3 className="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        <h3 className="section-subheading text-muted">Elevating Interviews. Empowering Your Success.</h3>
       </div>
       <ul className="timeline">
         <li>
-          <div className="timeline-image"><img className="rounded-circle img-fluid" src="assets/img/about/1.jpg" alt="..." /></div>
+          <div className="timeline-image"><img className="rounded-circle img-fluid h-100" src={begining} alt="begining" /></div>
           <div className="timeline-panel">
             <div className="timeline-heading">
-              <h4>2009-2011</h4>
+              <h4>2022-2023</h4>
               <h4 className="subheading">Our Humble Beginnings</h4>
             </div>
-            <div className="timeline-body"><p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+            <div className="timeline-body"><p className="text-muted">From a simple idea to a game-changer. Discover the inspiring story of InterviewG's inception and our passion for innovation.</p></div>
           </div>
         </li>
         <li className="timeline-inverted">
-          <div className="timeline-image"><img className="rounded-circle img-fluid" src="assets/img/about/2.jpg" alt="..." /></div>
+          <div className="timeline-image"><img className="rounded-circle img-fluid h-100" src={agency} alt="agency" /></div>
           <div className="timeline-panel">
             <div className="timeline-heading">
-              <h4>March 2011</h4>
-              <h4 className="subheading">An Agency is Born</h4>
+              <h4>September 2023</h4>
+              <h4 className="subheading">An Agency will Born</h4>
             </div>
-            <div className="timeline-body"><p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+            <div className="timeline-body"><p className="text-muted">The birth of InterviewG, a groundbreaking platform that revolutionizes hiring. Learn how we became the go-to solution for interviewers.</p></div>
           </div>
         </li>
-        <li>
+        {/* <li>
           <div className="timeline-image"><img className="rounded-circle img-fluid" src="assets/img/about/3.jpg" alt="..." /></div>
           <div className="timeline-panel">
             <div className="timeline-heading">
@@ -215,8 +223,8 @@ const LandingPage = () => {
             </div>
             <div className="timeline-body"><p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
           </div>
-        </li>
-        <li className="timeline-inverted">
+        </li> */}
+        {/* <li className="timeline-inverted">
           <div className="timeline-image"><img className="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="..." /></div>
           <div className="timeline-panel">
             <div className="timeline-heading">
@@ -225,7 +233,7 @@ const LandingPage = () => {
             </div>
             <div className="timeline-body"><p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
           </div>
-        </li>
+        </li> */}
         <li className="timeline-inverted">
           <div className="timeline-image">
             <h4>
@@ -285,7 +293,7 @@ const LandingPage = () => {
     </div>
   </section> */}
   {/* Clients*/}
-  <div className="py-5">
+  {/* <div className="py-5">
     <div className="container">
       <div className="row align-items-center">
         <div className="col-md-3 col-sm-6 my-3">
@@ -302,13 +310,13 @@ const LandingPage = () => {
         </div>
       </div>
     </div>
-  </div>
+  </div> */}
   {/* Contact*/}
   <section className="page-section" id="contact">
     <div className="container">
       <div className="text-center">
         <h2 className="section-heading text-uppercase">Contact Us</h2>
-        <h3 className="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        <h3 className="section-subheading text-muted">Reach Out. Let's Connect Today</h3>
       </div>
       {/* * * * * * * * * * * * * * * **/}
       {/* * * SB Forms Contact Form * **/}
@@ -368,10 +376,10 @@ const LandingPage = () => {
     </div>
   </section>
   {/* Footer*/}
-  <footer className="footer py-4">
+  {/* <footer className="footer py-4">
     <div className="container">
       <div className="row align-items-center">
-        <div className="col-lg-4 text-lg-start">Copyright © Your Website 2023</div>
+        <div className="col-lg-4 text-lg-start">Copyright © InterviewG 2022</div>
         <div className="col-lg-4 my-3 my-lg-0">
           <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i className="fab fa-twitter" /></a>
           <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i className="fab fa-facebook-f" /></a>
@@ -383,7 +391,7 @@ const LandingPage = () => {
         </div>
       </div>
     </div>
-  </footer>
+  </footer> */}
   {/* Portfolio Modals*/}
   {/* Portfolio item 1 modal popup*/}
   <div className="portfolio-modal modal fade" id="portfolioModal1" tabIndex={-1} role="dialog" aria-hidden="true">
@@ -395,10 +403,10 @@ const LandingPage = () => {
             <div className="col-lg-8">
               <div className="modal-body">
                 {/* Project details*/}
-                <h2 className="text-uppercase">Project Name</h2>
+                <h2 className="text-uppercase">Demo Clips</h2>
                 <p className="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                 <img className="img-fluid d-block mx-auto" src="assets/img/portfolio/1.jpg" alt="..." />
-                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                <p>Work in Progress</p>
                 <ul className="list-inline">
                   <li>
                     <strong>Client:</strong>
@@ -411,7 +419,7 @@ const LandingPage = () => {
                 </ul>
                 <button className="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
                   <i className="fas fa-xmark me-1" />
-                  Close Project
+                  Close Demo
                 </button>
               </div>
             </div>
@@ -430,10 +438,10 @@ const LandingPage = () => {
             <div className="col-lg-8">
               <div className="modal-body">
                 {/* Project details*/}
-                <h2 className="text-uppercase">Project Name</h2>
+                <h2 className="text-uppercase">Demo Clips</h2>
                 <p className="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                 <img className="img-fluid d-block mx-auto" src="assets/img/portfolio/2.jpg" alt="..." />
-                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                <p>Work in Progress</p>
                 <ul className="list-inline">
                   <li>
                     <strong>Client:</strong>
@@ -446,7 +454,7 @@ const LandingPage = () => {
                 </ul>
                 <button className="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
                   <i className="fas fa-xmark me-1" />
-                  Close Project
+                  Close Demo
                 </button>
               </div>
             </div>
@@ -465,10 +473,10 @@ const LandingPage = () => {
             <div className="col-lg-8">
               <div className="modal-body">
                 {/* Project details*/}
-                <h2 className="text-uppercase">Project Name</h2>
+                <h2 className="text-uppercase">Demo Clips</h2>
                 <p className="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                 <img className="img-fluid d-block mx-auto" src="assets/img/portfolio/3.jpg" alt="..." />
-                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                <p>Work in Progress</p>
                 <ul className="list-inline">
                   <li>
                     <strong>Client:</strong>
@@ -481,7 +489,7 @@ const LandingPage = () => {
                 </ul>
                 <button className="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
                   <i className="fas fa-xmark me-1" />
-                  Close Project
+                  Close Demo
                 </button>
               </div>
             </div>
@@ -500,10 +508,10 @@ const LandingPage = () => {
             <div className="col-lg-8">
               <div className="modal-body">
                 {/* Project details*/}
-                <h2 className="text-uppercase">Project Name</h2>
+                <h2 className="text-uppercase">Demo Clips</h2>
                 <p className="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                 <img className="img-fluid d-block mx-auto" src="assets/img/portfolio/4.jpg" alt="..." />
-                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                <p>Work in Progress</p>
                 <ul className="list-inline">
                   <li>
                     <strong>Client:</strong>
@@ -516,7 +524,7 @@ const LandingPage = () => {
                 </ul>
                 <button className="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
                   <i className="fas fa-xmark me-1" />
-                  Close Project
+                  Close Demo
                 </button>
               </div>
             </div>
@@ -535,10 +543,10 @@ const LandingPage = () => {
             <div className="col-lg-8">
               <div className="modal-body">
                 {/* Project details*/}
-                <h2 className="text-uppercase">Project Name</h2>
+                <h2 className="text-uppercase">Demo Clips</h2>
                 <p className="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                 <img className="img-fluid d-block mx-auto" src="assets/img/portfolio/5.jpg" alt="..." />
-                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                <p>Work in Progress</p>
                 <ul className="list-inline">
                   <li>
                     <strong>Client:</strong>
@@ -551,7 +559,7 @@ const LandingPage = () => {
                 </ul>
                 <button className="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
                   <i className="fas fa-xmark me-1" />
-                  Close Project
+                  Close Demo
                 </button>
               </div>
             </div>
@@ -570,10 +578,10 @@ const LandingPage = () => {
             <div className="col-lg-8">
               <div className="modal-body">
                 {/* Project details*/}
-                <h2 className="text-uppercase">Project Name</h2>
+                <h2 className="text-uppercase">Demo Clips</h2>
                 <p className="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                 <img className="img-fluid d-block mx-auto" src="assets/img/portfolio/6.jpg" alt="..." />
-                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                <p>Work in Progress</p>
                 <ul className="list-inline">
                   <li>
                     <strong>Client:</strong>
@@ -586,7 +594,7 @@ const LandingPage = () => {
                 </ul>
                 <button className="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
                   <i className="fas fa-xmark me-1" />
-                  Close Project
+                  Close Demo
                 </button>
               </div>
             </div>
