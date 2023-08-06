@@ -1,5 +1,6 @@
 import React from "react";
-
+import {useRef} from 'react';
+import {useReactToPrint} from 'react-to-print';
 import {
   Table,
   TableHead,
@@ -34,6 +35,8 @@ const TBody = styled(TableRow)`
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
   /////////////////////////////////////////
+  const componentPDF=useRef();
+  /////////////////////////////////////////
   const deleteUserDetails = async (id) => {
     await deleteUser(id);
     getAllUser();
@@ -49,15 +52,19 @@ const AllUsers = () => {
     setUsers(response.data);
   };
   ///////////////////////////////////////////////
-  const Print=()=>{
-    
-    window.print();
-};
+  const generatePDF=useReactToPrint({
+    content:()=>componentPDF.current,
+    documentTitle:"UserData",
+    onAfterPrint:()=>alert("Data Saved in PDF")
+  });
 
   //////////////////////////////////////////////
   return (
     <StyledTable>
-     <button classname="print" onClick={()=>Print()}>PRINT</button>
+      <div className="d-grid d-md-flex justify-content-md-end mb-3">
+      <button className="btn btn-success" onClick={generatePDF}>PDF</button>
+      </div>
+     <div ref={componentPDF} style={{width:'100%'}}>
       <TableHead>
         <THead>
           <TableCell>Id</TableCell>
@@ -66,7 +73,7 @@ const AllUsers = () => {
           <TableCell>Phone</TableCell>
           <TableCell>Date/Time</TableCell>
           <TableCell>Status</TableCell>
-          <TableCell>Edit/Delete</TableCell>
+          <TableCell className="d-print-none">Edit/Delete</TableCell>
         </THead>
       </TableHead>
       <TableBody>
@@ -78,8 +85,8 @@ const AllUsers = () => {
             <TableCell>{user.phone}</TableCell>
             <TableCell>{user.date}</TableCell>
             <TableCell>{user.status}</TableCell>
-            <TableCell>
-              <Button
+            <TableCell className="d-print-none">
+              <Button 
                 variant="contained"
                 style={{ marginRight: 10 }}
                 component={Link}
@@ -87,7 +94,7 @@ const AllUsers = () => {
               >
                 Edit
               </Button>
-              <Button
+              <Button 
                 variant="contained"
                 color="secondary"
                 onClick={() => deleteUserDetails(user._id)}
@@ -98,6 +105,7 @@ const AllUsers = () => {
           </TBody>
         ))}
       </TableBody>
+      </div>
     </StyledTable>
   );
 };
