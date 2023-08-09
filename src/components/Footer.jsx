@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div style={{backgroundColor: '#000000'}}>
+    <div style={{backgroundColor: 'gray'}}>
         {/* <div class="card text-center">
   <div class="card-header">
     Featured
