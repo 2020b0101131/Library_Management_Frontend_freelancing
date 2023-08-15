@@ -1,6 +1,7 @@
 import React from "react";
 import {useRef} from 'react';
 import {useReactToPrint} from 'react-to-print';
+
 import {
   Table,
   TableHead,
@@ -15,8 +16,9 @@ import { useEffect, useState } from "react";
 import { getUsers, deleteUser } from "../service/Api.jsx";
 //////////////////////////////////////////////////////////////////
 const StyledTable = styled(Table)`
-  width: 90%;
-  margin: 50px auto 0px;
+width: 90%;
+margin: 30px auto 0px;
+margin-left:10rem
 `;
 const THead = styled(TableRow)`
   background: #000000;
@@ -60,12 +62,17 @@ const AllUsers = () => {
 
   //////////////////////////////////////////////
   return (
-    <StyledTable>
+    <div className="container-fluid ">
+    <div className="overflow-scroll">
+    <StyledTable  >
+      {/* <div className="d-grid d-md-flex justify-content-md-end mb-3">
+      <button className="btn btn-success" onClick={generatePDF}>PDF</button>
+      </div> */}
+     <div ref={componentPDF} style={{width:'100%'}}>
+      <TableHead >
       <div className="d-grid d-md-flex justify-content-md-end mb-3">
       <button className="btn btn-success" onClick={generatePDF}>PDF</button>
       </div>
-     <div ref={componentPDF} style={{width:'100%'}}>
-      <TableHead>
         <THead>
           <TableCell>Id</TableCell>
           <TableCell>Name</TableCell>
@@ -106,7 +113,10 @@ const AllUsers = () => {
         ))}
       </TableBody>
       </div>
+    
     </StyledTable>
+    </div>
+    </div>
   );
 };
 

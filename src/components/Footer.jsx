@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div style={{backgroundColor: 'gray'}}>
+    <div style={{backgroundColor: '#000000'}}>
         {/* <div class="card text-center">
   <div class="card-header">
     Featured
@@ -17,7 +17,7 @@ const Footer = () => {
   </div>
 </div> */}
 {/* Remove the container if you want to extend the Footer to full width. */}
-<div className="container-fluid ">
+<div className="container-fluid " id="alluser_footer">
   {/* Footer */}
   <footer className="text-center text-white" style={{backgroundColor: '#000000'}}>
     {/* Grid container */}
