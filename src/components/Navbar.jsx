@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import { AppBar, Toolbar, styled } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
+import logo from "../img/logo_interview.jpg"
 
 
 
@@ -54,9 +55,9 @@ const Navbar = () => {
      <h1>Saran</h1>
      <h1>Saran</h1> */}
 
-   <nav className="navbar navbar-dark navbar-expand-lg bg-dark fixed-top">
-  <div className="container-fluid  ">
-    <NavLink className="navbar-brand" to="/">Brand</NavLink>
+   <nav className="navbar navbar-dark navbar-expand-lg fixed-top "style={{backgroundColor:'black'}}>
+  <div className="container-fluid  "style={{backgroundColor:'black'}}>
+    <NavLink className="navbar-brand" to="/"><img style={{height:'40px'}}src={logo} alt="logo" /></NavLink>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon" />
     </button>

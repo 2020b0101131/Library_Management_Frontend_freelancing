@@ -88,7 +88,7 @@ const AllUsers = () => {
           <TBody>
             <TableCell>{user._id}</TableCell>
             <TableCell>{user.name}</TableCell>
-            <TableCell>{user.email}</TableCell>
+            <TableCell>{user.email_id}</TableCell>
             <TableCell>{user.phone}</TableCell>
             <TableCell>{user.date}</TableCell>
             <TableCell>{user.status}</TableCell>

@@ -20,7 +20,7 @@ export const getUsers = async () => {
 };
 ////////////////////////////////////////////////////////////////
 export const getUser = async (id) => {
-  
+  console.log("getUser",id);
   try {
     return await axios.get(`${URL}/${id}`);
   } catch (error) {
@@ -29,6 +29,7 @@ export const getUser = async (id) => {
 };
 ////////////////////////////////////////////////////////////////
 export const editUser = async (user, id) => {
+ 
   try {
     return await axios.put(`${URL}/${id}`, user);
   } catch (error) {
@@ -67,3 +68,22 @@ export const userProfile=async()=>{
     console.log("Error while getProfile",error);
   }
 }
+////////////////////////////////////////////////////////////
+export const addData=async(data)=>{
+  console.log("Today data",data);
+try{
+return await axios.post(`${URL}/adddata`,data)
+}catch(error){
+console.log("Error while addData",error);
+}
+}
+//////////////////////////////////////////////////////////
+export const display = async () => {
+  try {
+    return await axios.get(`${URL}/alldata`);
+  } catch (error) {
+    console.log("Error while getUser", error);
+  }
+};
+////////////////////////////////////////////////////////
+

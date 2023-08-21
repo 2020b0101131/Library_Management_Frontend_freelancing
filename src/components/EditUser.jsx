@@ -22,7 +22,7 @@ const Container = styled(FormGroup)`
 const defaultValue = {
   _id: "",
   name: "",
-  email: "",
+  email_id: "",
   phone: "",
   date: "",
   status: "",
@@ -67,7 +67,7 @@ const AddUser = () => {
         </FormControl>
         <FormControl>
           <InputLabel>Email</InputLabel>
-          <Input onChange={(e) => onValueChange(e)} name="email" value={user.email}/>
+          <Input onChange={(e) => onValueChange(e)} name="email_id" value={user.email_id}/>
         </FormControl>
 
         <FormControl>

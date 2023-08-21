@@ -17,7 +17,8 @@ const ScheduleInterview = () => {
             <input type='text' placeholder='Enter Room Code' value={value} onChange={(e)=>setValue(e.target.value)}/>
             <button onClick={handleJoinRoom}>Join</button>
         </form>
-      
+      {/* <a href='https://meet.google.com/' target="_blank"
+        rel="noreferrer">Start Interview Online</a> */}
     </div>
   )
 }
