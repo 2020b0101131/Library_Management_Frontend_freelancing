@@ -1,120 +1,74 @@
-import React from 'react'
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const Footer = () => {
   return (
-    <div style={{backgroundColor: '#000000'}}>
-        {/* <div class="card text-center">
-  <div class="card-header">
-    Featured
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-  <div class="card-footer text-body-secondary">
-    2 days ago
-  </div>
-</div> */}
-{/* Remove the container if you want to extend the Footer to full width. */}
-<div className="container-fluid " id="alluser_footer">
-  {/* Footer */}
-  <footer className="text-center text-white" style={{backgroundColor: '#000000'}}>
-    {/* Grid container */}
-    <div className="container ">
-      {/* Section: Links */}
-      <section className="mt-5">
-        {/* Grid row*/}
-        <div className="row text-center d-flex justify-content-center pt-5">
-          {/* Grid column */}
-          <div className="col-md-2">
+    <footer className="bg-dark text-white py-5">
+      <Container>
+        <Row className="text-center mb-4">
+          <Col md={2} className="mb-3">
             <h6 className="text-uppercase font-weight-bold">
-              <a href="#!" className="text-white">About us</a>
+              <a href="#!" className="text-white text-decoration-none">About Us</a>
             </h6>
-          </div>
-          {/* Grid column */}
-          {/* Grid column */}
-          <div className="col-md-2">
+          </Col>
+          <Col md={2} className="mb-3">
             <h6 className="text-uppercase font-weight-bold">
-              <a href="#!" className="text-white">Products</a>
+              <a href="#!" className="text-white text-decoration-none">Products</a>
             </h6>
-          </div>
-          {/* Grid column */}
-          {/* Grid column */}
-          <div className="col-md-2">
+          </Col>
+          <Col md={2} className="mb-3">
             <h6 className="text-uppercase font-weight-bold">
-              <a href="#!" className="text-white">Awards</a>
+              <a href="#!" className="text-white text-decoration-none">Awards</a>
             </h6>
-          </div>
-          {/* Grid column */}
-          {/* Grid column */}
-          <div className="col-md-2">
+          </Col>
+          <Col md={2} className="mb-3">
             <h6 className="text-uppercase font-weight-bold">
-              <a href="#!" className="text-white">Help</a>
+              <a href="#!" className="text-white text-decoration-none">Help</a>
             </h6>
-          </div>
-          {/* Grid column */}
-          {/* Grid column */}
-          <div className="col-md-2">
+          </Col>
+          <Col md={2} className="mb-3">
             <h6 className="text-uppercase font-weight-bold">
-              <a href="#!" className="text-white">Contact</a>
+              <a href="#!" className="text-white text-decoration-none">Contact</a>
             </h6>
-          </div>
-          {/* Grid column */}
-        </div>
-        {/* Grid row*/}
-      </section>
-      {/* Section: Links */}
-      <hr className="my-5" />
-      {/* Section: Text */}
-      <section className="mb-5">
-        <div className="row d-flex justify-content-center">
-          <div className="col-lg-8">
+          </Col>
+        </Row>
+        <Row className="text-center mb-4">
+          <Col lg={8} className="mx-auto">
             <p>
-            InterviewG envisions a world where hiring is seamless and insightful. Our mission is to empower interviewers with innovative tools, fostering better connections and unlocking the potential of talent.
+              InterviewG envisions a world where hiring is seamless and insightful. Our mission is to empower interviewers with innovative tools, fostering better connections and unlocking the potential of talent.
             </p>
-          </div>
-        </div>
-      </section>
-      {/* Section: Text */}
-      {/* Section: Social */}
-      <section className="text-center mb-5">
-        <a href className="text-white me-4">
-          <i className="fab fa-facebook-f" />
-        </a>
-        <a href className="text-white me-4">
-          <i className="fab fa-twitter" />
-        </a>
-        <a href className="text-white me-4">
-          <i className="fab fa-google" />
-        </a>
-        <a href className="text-white me-4">
-          <i className="fab fa-instagram" />
-        </a>
-        <a href className="text-white me-4">
-          <i className="fab fa-linkedin" />
-        </a>
-        <a href className="text-white me-4">
-          <i className="fab fa-github" />
-        </a>
-      </section>
-      {/* Section: Social */}
-    </div>
-    {/* Grid container */}
-    {/* Copyright */}
-    <div className="text-center p-3" style={{backgroundColor: 'rgba(0, 0, 0, 0.2)'}}>
-    Copyright © InterviewG 2022
-      
-      
-    </div>
-    {/* Copyright */}
-  </footer>
-  {/* Footer */}
-</div>
-{/* End of .container */}
+          </Col>
+        </Row>
+        <Row className="text-center">
+          <Col>
+            <a href="#!" className="text-white me-3">
+              <i className="bi bi-facebook" style={{ fontSize: '20px' }}></i>
+            </a>
+            <a href="#!" className="text-white me-3">
+              <i className="bi bi-twitter" style={{ fontSize: '20px' }}></i>
+            </a>
+            <a href="#!" className="text-white me-3">
+              <i className="bi bi-google" style={{ fontSize: '20px' }}></i>
+            </a>
+            <a href="#!" className="text-white me-3">
+              <i className="bi bi-instagram" style={{ fontSize: '20px' }}></i>
+            </a>
+            <a href="#!" className="text-white me-3">
+              <i className="bi bi-linkedin" style={{ fontSize: '20px' }}></i>
+            </a>
+            <a href="#!" className="text-white">
+              <i className="bi bi-github" style={{ fontSize: '20px' }}></i>
+            </a>
+          </Col>
+        </Row>
+        <Row className="text-center mt-4">
+          <Col>
+            <p className="mb-0">Copyright © InterviewG 2024</p>
+          </Col>
+        </Row>
+      </Container>
+    </footer>
+  );
+};
 
-    </div>
-  )
-}
-
-export default Footer
+export default Footer;

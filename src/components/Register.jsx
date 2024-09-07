@@ -1,156 +1,93 @@
 import React, { useState } from "react";
-import { NavLink,useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { registerUser } from "../service/Api.jsx";
+import logo from "../img/logo_interview.jpg";
+import "../style/loginRegister.css"
 
 const Register = () => {
-    const [email,setEmail]=useState();
-    const [password,setPassword]=useState();
-    const [cpassword,setCpassword]=useState();
-    const [username,setUsername]=useState();
-    const navigate=useNavigate();
-    const handleSubmit=async(e)=>{
-        e.preventDefault();
-        try{
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [cpassword, setCpassword] = useState("");
+  const navigate = useNavigate();
 
-         const response= await registerUser({username,email,password});
-         console.log("saransh_response::",response.data);
-          alert("Registered Successfully");
-          navigate('/userprofile',{state:response.data});
-        }catch(error){
-          console.log("Error while handleSubmit",error);
-        }
-        
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await registerUser({ username, email, password });
+      alert("Registered Successfully");
+      navigate("/userprofile", { state: response.data });
+    } catch (error) {
+      console.log("Error while registering", error);
     }
-  return (
-    <div className="container d-flex justify-content-center">
-      <div
-        className="row border border-secondary card w-sm-50 "
-        
-      >
-        <div className="border border-primary px-sm-5">
-          {/* Pills navs */}
-          <ul
-            className="nav nav-pills nav-justified mb-5 "
-            id="ex1"
-            role="tablist"
-          >
-            <li className="nav-item px-sm-5" role="presentation">
-              <NavLink
-                className="nav-link px-sm-5"
-                id="tab-login"
-                data-mdb-toggle="pill"
-                to="/login"
-                role="tab"
-                aria-controls="pills-login"
-                aria-selected="true"
-              >
-                Login
-              </NavLink>
-            </li>
-            <li className="nav-item" role="presentation">
-              <NavLink
-                className="nav-link px-md-5"
-                id="tab-register"
-                data-mdb-toggle="pill"
-                to="/register"
-                role="tab"
-                aria-controls="pills-register"
-                aria-selected="false"
-              >
-                Register
-              </NavLink>
-            </li>
-          </ul>
-          {/* Pills navs */}
-          {/* Pills content */}
-          <div className="tab-content ">
-            <div
-              className="tab-pane fade show active"
-              id="pills-login"
-              role="tabpanel"
-              aria-labelledby="tab-login"
-            >
-                {/* ////////////////////////////////////////////////////////////////// */}
-              <form>
-                {/* UserName */}
-                <div className="form-outline mb-1">
-                  <input type="email" id="loginName" className="form-control" value={username} onChange={(e)=>setUsername(e.target.value)} />
-                  <label className="form-label" htmlFor="loginName">
-                     Username
-                  </label>
-                </div>
+  };
 
-                {/* Email input */}
-                <div className="form-outline mb-1">
-                  <input type="email" id="loginName" className="form-control" value={email} onChange={(e)=>setEmail(e.target.value)} />
-                  <label className="form-label" htmlFor="loginName">
-                    Email or username
-                  </label>
-                </div>
-                {/* Password input */}
-                <div className="form-outline mb-1">
-                  <input
-                    type="password"
-                    id="loginPassword"
-                    className="form-control"
-                    value={password} 
-                    onChange={(e)=>{setPassword(e.target.value)}}
-                  />
-                  <label className="form-label" htmlFor="loginPassword">
-                    Password
-                  </label>
-                </div>
-                {/* Confirm Password input */}
-                <div className="form-outline mb-1">
-                  <input
-                    type="password"
-                    id="logincPassword"
-                    className="form-control"
-                    value={cpassword} 
-                    onChange={(e)=>{setCpassword(e.target.value)}}
-                  />
-                  <label className="form-label" htmlFor="loginPassword">
-                    Confirm Password
-                  </label>
-                </div>
-                <div>
-                <button type="submit" onClick={(e)=>handleSubmit(e)} className="btn btn-primary btn-block mb-1">Register</button>
-                </div>
-                
-               
-               {/* ///////////////////////////////////////////////////////////////////// */}
-               <div className="text-center mb-0">
-                  <p>Or register in with:</p>
-                  <button
-                    type="button"
-                    className="btn btn-link btn-floating mx-1"
-                  >
-                    <i className="fab fa-facebook-f" />
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-link btn-floating mx-1"
-                  >
-                    <i className="fab fa-google" />
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-link btn-floating mx-1"
-                  >
-                    <i className="fab fa-twitter" />
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-link btn-floating mx-1"
-                  >
-                    <i className="fab fa-github" />
-                  </button>
-                </div>
-              </form>
-            </div>
-            
+  return (
+    <div className="register-container" style={{marginBottom:'4rem'}}>
+      <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div className="container">
+          <a className="navbar-brand" href="#page-top">
+            <img className="logo" src={logo} alt="logo" />
+          </a>
+          <div className="collapse navbar-collapse">
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/">Home</NavLink>
+              </li>
+            </ul>
           </div>
-          {/* Pills content */}
+        </div>
+      </nav>
+
+      <div className="register-card" style={{height:'90vh',marginTop:"5rem",}}>
+        <h2 className="text-center mb-4">Create Your Account</h2>
+        <form className="form">
+          <div className="form-outline">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-outline">
+            <input
+              type="email"
+              className="form-control"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-outline">
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-outline">
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Confirm Password"
+              value={cpassword}
+              onChange={(e) => setCpassword(e.target.value)}
+              required
+            />
+          </div>
+          <button className="btn gradient-btn w-100 mt-3" onClick={(e) => handleSubmit(e)}>
+            Register Now
+          </button>
+        </form>
+        <div className="text-center mt-4">
+          <p>Already have an account? <NavLink to="/login" className="link">Sign In</NavLink></p>
         </div>
       </div>
     </div>
