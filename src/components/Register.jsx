@@ -44,6 +44,7 @@ const Register = () => {
           </div>
         </div>
       </nav>
+      <marquee className="fixed-top "id="gfg" style={{backgroundColor:'yellow',marginTop: '4rem'}}><b>Notice: Due to high server traffic, registration may take a few moments. We appreciate your patience.</b></marquee>
 
       <div className="register-card" style={{ height: {md:'80vh'}, marginTop: "5rem", position: 'relative', }}>
         {loading && (

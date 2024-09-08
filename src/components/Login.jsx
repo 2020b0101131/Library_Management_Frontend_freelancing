@@ -75,6 +75,7 @@ const Login = () => {
           </div>
         </div>
       </nav>
+      <marquee className="fixed-top "id="gfg" style={{backgroundColor:'yellow',marginTop: '4rem'}}><b>Notice: Due to high server traffic, signing in may take a few moments. We appreciate your patience.</b></marquee>
 
       <div className="login-card " style={{ height: {md:'80vh'}, marginTop:'1rem' }}>
         <h2 className="text-center mb-4">Welcome to InterviewG</h2>

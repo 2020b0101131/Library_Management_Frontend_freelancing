@@ -38,7 +38,7 @@ const LandingPage = () => {
     </div>
   </nav>
  
-  <marquee className="fixed-top "id="gfg" style={{backgroundColor:'yellow',marginTop: '5rem'}}><b>Kindly login to view & explore all the features of this website. The website is in progress.</b></marquee>
+  <marquee className="fixed-top "id="gfg" style={{backgroundColor:'yellow',marginTop: '5rem'}}><b>Please log in to access all features. The site is currently being enhanced—thank you for your patience.</b></marquee>
 
   {/* Masthead*/}
   <header className="masthead">
@@ -90,7 +90,7 @@ const LandingPage = () => {
     <div className="container">
       <div className="text-center">
         <h2 className="section-heading text-uppercase">Features at Glance</h2>
-        <h3 className="section-subheading text-muted">Efficient. Intuitive. Powering Your Hiring Process.</h3>
+        <h3 className="section-subheading">Efficient. Intuitive. Powering Your Hiring Process.</h3>
       </div>
       <div className="row">
         <div className="col-lg-4 col-sm-6 mb-4">
@@ -104,7 +104,7 @@ const LandingPage = () => {
             </a>
             <div className="portfolio-caption">
               <div className="portfolio-caption-heading">Candidate Evaluation</div>
-              <div className="portfolio-caption-subheading text-muted">Tools to rate and evaluate candidates based on various criteria.</div>
+              <div className="portfolio-caption-subheading ">Tools to rate and evaluate candidates based on various criteria.</div>
             </div>
           </div>
         </div>
@@ -119,7 +119,7 @@ const LandingPage = () => {
             </a>
             <div className="portfolio-caption">
               <div className="portfolio-caption-heading">Communication Tools</div>
-              <div className="portfolio-caption-subheading text-muted">Integrated email or messaging systems for interviewer-candidate communication.</div>
+              <div className="portfolio-caption-subheading ">Integrated email or messaging systems for interviewer-candidate communication.</div>
             </div>
           </div>
         </div>
@@ -134,7 +134,7 @@ const LandingPage = () => {
             </a>
             <div className="portfolio-caption">
               <div className="portfolio-caption-heading">Interview Recording</div>
-              <div className="portfolio-caption-subheading text-muted">Capability to record and review interviews for later assessment.</div>
+              <div className="portfolio-caption-subheading ">Capability to record and review interviews for later assessment.</div>
             </div>
           </div>
         </div>
@@ -149,7 +149,7 @@ const LandingPage = () => {
             </a>
             <div className="portfolio-caption">
               <div className="portfolio-caption-heading">Analytics and Reporting</div>
-              <div className="portfolio-caption-subheading text-muted">Data-driven insights on interview performance and candidate metrics.</div>
+              <div className="portfolio-caption-subheading ">Data-driven insights on interview performance and candidate metrics.</div>
             </div>
           </div>
         </div>
@@ -164,7 +164,7 @@ const LandingPage = () => {
             </a>
             <div className="portfolio-caption">
               <div className="portfolio-caption-heading">Skill Testing</div>
-              <div className="portfolio-caption-subheading text-muted">Integration of skill assessments to evaluate candidate abilities</div>
+              <div className="portfolio-caption-subheading ">Integration of skill assessments to evaluate candidate abilities</div>
             </div>
           </div>
         </div>
@@ -179,7 +179,7 @@ const LandingPage = () => {
             </a>
             <div className="portfolio-caption">
               <div className="portfolio-caption-heading">Interviewer Collaboration</div>
-              <div className="portfolio-caption-subheading text-muted">Features that enable multiple interviewers to collaborate and share feedback.</div>
+              <div className="portfolio-caption-subheading ">Features that enable multiple interviewers to collaborate and share feedback.</div>
             </div>
           </div>
         </div>
