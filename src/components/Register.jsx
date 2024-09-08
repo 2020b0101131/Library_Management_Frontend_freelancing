@@ -1,29 +1,35 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { registerUser } from "../service/Api.jsx";
-import logo from "../img/logo_interview.jpg";
-import "../style/loginRegister.css"
+import logo from "../img/logo_interview.png";
+import "../style/loginRegister.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Loader from "../components/Loader"; // Import the custom Loader component
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
+  const [loading, setLoading] = useState(false); // Add loader state
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Start loading
     try {
       const response = await registerUser({ username, email, password });
       alert("Registered Successfully");
       navigate("/userprofile", { state: response.data });
     } catch (error) {
       console.log("Error while registering", error);
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
   return (
-    <div className="register-container" style={{marginBottom:'4rem'}}>
+    <div className="register-container px-3 " style={{ marginBottom: '4rem', }}>
       <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
         <div className="container">
           <a className="navbar-brand" href="#page-top">
@@ -39,7 +45,14 @@ const Register = () => {
         </div>
       </nav>
 
-      <div className="register-card" style={{height:'90vh',marginTop:"5rem",}}>
+      <div className="register-card" style={{ height: {md:'80vh'}, marginTop: "5rem", position: 'relative', }}>
+        {loading && (
+          <div className="text-center mb-4">
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        )}
         <h2 className="text-center mb-4">Create Your Account</h2>
         <form className="form">
           <div className="form-outline">
@@ -82,8 +95,12 @@ const Register = () => {
               required
             />
           </div>
-          <button className="btn gradient-btn w-100 mt-3" onClick={(e) => handleSubmit(e)}>
-            Register Now
+          <button
+            className="btn gradient-btn w-100 mt-3"
+            onClick={(e) => handleSubmit(e)}
+            disabled={loading} // Disable button when loading
+          >
+            {loading ? "Registering..." : "Register Now"}
           </button>
         </form>
         <div className="text-center mt-4">

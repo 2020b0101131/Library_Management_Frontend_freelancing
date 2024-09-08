@@ -4,7 +4,7 @@ import int0 from '../img/int0.jpg';
 import int00 from '../img/int00.jpg';
 import int1 from '../img/int1.jpg';
 import int4 from '../img/int4.jpg';
-import logo from "../img/logo_interview.jpg"
+import logo from "../img/logo_interview.png"
 import begining from "../img/begining.jpg"
 import agency from "../img/agency.png"
 import cand_evalution from "../img/cand_evaluation.png"

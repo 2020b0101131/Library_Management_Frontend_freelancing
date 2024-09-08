@@ -14,7 +14,7 @@ const Backend = () => {
   const handleDel = () => {};
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5" style={{marginBottom:"3rem"}}>
       <div className="row justify-content-center">
         <div className="col-lg-10">
           <div className="text-center mb-5">

@@ -79,4 +79,17 @@ body {
   .forgot-link:hover, .link:hover {
     text-decoration: underline;
   }
+  /* Override Bootstrap input focus styles */
+input:focus, 
+textarea:focus, 
+select:focus {
+  border-color: #7C00FE !important;
+  box-shadow: 0 0 0 0.2rem rgba(124, 0, 254, 0.25) !important;
+}
+
+/* Optional: If you want to also apply this style to the 'form-control' class specifically */
+.form-control:focus {
+  border-color: #7C00FE !important;
+  box-shadow: 0 0 0 0.2rem rgba(124, 0, 254, 0.25) !important;
+}
   
