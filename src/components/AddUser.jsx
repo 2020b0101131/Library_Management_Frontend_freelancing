@@ -148,9 +148,9 @@ const AddUser = () => {
         <InputLabel>Phone</InputLabel>
         <Input onChange={onValueChange} name="phone" />
       </StyledFormControl>
-      <StyledFormControl>
+      <StyledFormControl >
         <InputLabel>Date/Time</InputLabel>
-        <Input type="date" value={user.date} onChange={onDateChange} name="date" />
+        <Input type="date" value={user.date || " "} onChange={onDateChange} name="date" />
       </StyledFormControl>
       <StyledFormControl>
         <Autocomplete
