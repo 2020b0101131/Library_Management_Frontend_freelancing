@@ -8,12 +8,14 @@ import java from "../img/java.jpg";
 import python from "../img/python.jpg";
 import "bootstrap/dist/css/bootstrap.css";
 import { NavLink } from "react-router-dom";
-import "../style/codeForUser.css"
+import "../style/codeForUser.css";
 const CodeforUser = () => {
   return (
     <div className="container py-5">
       <div className="text-center mb-5">
-        <h2 className="display-4 text-gradient">Explore Coding Q&A</h2>
+        <h2 className="display-4 " style={{ color: "#FFEB00" }}>
+          Explore Interview Q&A
+        </h2>
         <p className="lead text-muted">
           Choose a category to browse interview questions and answers
         </p>
@@ -27,7 +29,8 @@ const CodeforUser = () => {
             <div className="card-body">
               <h5 className="card-title">Backend Developer</h5>
               <p className="card-text">
-                Create and maintain server-side apps, databases, and APIs for web functionality.
+                Create and maintain server-side apps, databases, and APIs for
+                web functionality.
               </p>
               <NavLink to="/backend" className="btn btn-primary btn-custom">
                 View Q/A
@@ -39,11 +42,16 @@ const CodeforUser = () => {
         {/* Card 2 */}
         <div className="col">
           <div className="card h-100 card-custom">
-            <img src={front} className="card-img-top" alt="Frontend Developer" />
+            <img
+              src={front}
+              className="card-img-top"
+              alt="Frontend Developer"
+            />
             <div className="card-body">
               <h5 className="card-title">Frontend Developer</h5>
               <p className="card-text">
-                Design and implement user interface components for web apps and sites.
+                Design and implement user interface components for web apps and
+                sites.
               </p>
               <NavLink to="/Frontend" className="btn btn-primary btn-custom">
                 View Q/A
@@ -55,11 +63,12 @@ const CodeforUser = () => {
         {/* Card 3 */}
         <div className="col">
           <div className="card h-100 card-custom">
-            <img src={fs} className="card-img-top" alt="Full Stack Developer" />
+            <img src={fs} className="card-img-top" alt="Web Developer" />
             <div className="card-body">
-              <h5 className="card-title">Full Stack Developer</h5>
+              <h5 className="card-title">Web Developer</h5>
               <p className="card-text">
-                Develop front-end and back-end applications for seamless web experiences.
+                Develop front-end and back-end applications for seamless web
+                experiences.
               </p>
               <NavLink to="/WebDev" className="btn btn-primary btn-custom">
                 View Q/A
@@ -107,7 +116,8 @@ const CodeforUser = () => {
             <div className="card-body">
               <h5 className="card-title">Java Developer</h5>
               <p className="card-text">
-                Leverage Java's platform independence and object-oriented design.
+                Leverage Java's platform independence and object-oriented
+                design.
               </p>
               <NavLink to="/Java" className="btn btn-primary btn-custom">
                 View Q/A

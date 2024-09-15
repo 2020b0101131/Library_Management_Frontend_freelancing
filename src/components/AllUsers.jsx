@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { getUsers, deleteUser } from "../service/Api.jsx";
-import Loader from './Loader'; // Import the Loader component
+import Loader from "./Loader"; // Import the Loader component
 
 // Custom Styles
 const StyledTable = styled(Table)`
@@ -69,8 +69,8 @@ const ResponsiveTableWrapper = styled("div")`
   &::-webkit-scrollbar {
     display: none;
   }
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 `;
 
 const AllUsers = () => {
@@ -87,7 +87,7 @@ const AllUsers = () => {
       let response = await getUsers();
       setUsers(response.data);
     } catch (error) {
-      console.error('Error fetching users:', error);
+      console.error("Error fetching users:", error);
     } finally {
       setLoading(false); // Set loading to false when data is fetched
     }
@@ -111,7 +111,7 @@ const AllUsers = () => {
   return (
     <div className="container py-4">
       <div className="d-flex justify-content-between align-items-center mb-3">
-        <h3 className="text-gradient">User Management</h3>
+        <h3 style={{ color: "lightblue" }}>Candidate Management</h3>
         <PDFButton onClick={generatePDF}>Save as PDF</PDFButton>
       </div>
       <ResponsiveTableWrapper>
@@ -128,33 +128,70 @@ const AllUsers = () => {
             </THead>
           </TableHead>
           <TableBody>
-            {users.map((user) => (
-              <TBody key={user._id}>
-                <TableCell>{user._id}</TableCell>
-                <TableCell>{user.name}</TableCell>
-                <TableCell>{user.email_id}</TableCell>
-                <TableCell>{user.phone}</TableCell>
-                <TableCell>{user.date}</TableCell>
-                <TableCell>{user.status}</TableCell>
-                <TableCell className="d-print-none">
-                  <StyledButton
-                    variant="contained"
-                    component={Link}
-                    to={`/edit/${user._id}`}
-                    style={{ marginRight: 10 }}
-                  >
-                    Edit
-                  </StyledButton>
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    onClick={() => deleteUserDetails(user._id)}
-                  >
-                    Delete
-                  </Button>
-                </TableCell>
-              </TBody>
-            ))}
+            {users.map((user, index) => {
+              return (
+                <TBody key={index + 1}>
+                  <TableCell>{index + 1}</TableCell>
+                  <TableCell>{user.name}</TableCell>
+                  <TableCell>{user.email}</TableCell>
+                  <TableCell>{user.phone_no}</TableCell>
+                  <TableCell>{user.date}</TableCell>
+                  <TableCell>
+                    {user.status_id === 1 ? (
+                      <span
+                        style={{
+                          marginTop: "4px",
+                          backgroundColor: "#F9E400",
+                          borderRadius: "5px",
+                          padding: "8px",
+                        }}
+                      >
+                        Pending
+                      </span>
+                    ) : user.status_id === 2 ? (
+                      <span
+                        style={{
+                          marginTop: "4px",
+                          backgroundColor: "#79D70F",
+                          borderRadius: "5px",
+                          padding: "8px",
+                        }}
+                      >
+                        Interviewed
+                      </span>
+                    ) : (
+                      <span
+                        style={{
+                          marginTop: "4px",
+                          backgroundColor: "#F5004F",
+                          borderRadius: "5px",
+                          padding: "8px",
+                        }}
+                      >
+                        Rejected
+                      </span>
+                    )}
+                  </TableCell>
+                  <TableCell className="d-print-none">
+                    <StyledButton
+                      variant="contained"
+                      component={Link}
+                      to={`/edit/${user.id}`}
+                      style={{ marginRight: 10 }}
+                    >
+                      Edit
+                    </StyledButton>
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      onClick={() => deleteUserDetails(user.id)}
+                    >
+                      Delete
+                    </Button>
+                  </TableCell>
+                </TBody>
+              );
+            })}
           </TableBody>
         </StyledTable>
       </ResponsiveTableWrapper>

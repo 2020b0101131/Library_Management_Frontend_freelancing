@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   styled,
@@ -9,8 +9,10 @@ import {
   Typography,
   Button,
   Box,
+  Autocomplete,
+  TextField,
 } from "@mui/material";
-import { addUser } from "../service/Api";
+import { addUser, getStatusMenu } from "../service/Api";
 
 const Container = styled(FormGroup)(({ theme }) => ({
   width: "50%",
@@ -80,31 +82,60 @@ const defaultValue = {
 const AddUser = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(defaultValue);
+  const [statusMenu, setStatusMenu] = useState([]);
+  const [selectedStatus, setSelectedStatus] = useState(null);
 
   const onValueChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  const onDateChange = (e) => {
+    setUser({ ...user, date: e.target.value });
+  };
+
   const AddUserDetails = async () => {
-    console.log(user);
-    await addUser(user);
+    const postData = {
+      name: user.name,
+      email: user.email_id,
+      phone_no: user.phone,
+      date: user.date,  // Include date in the submission
+      status_id: selectedStatus ? selectedStatus.id : null,
+    };
+    await addUser(postData);
     navigate("/allusers");
+  };
+
+  useEffect(() => {
+    getStatusData();
+  }, []);
+
+  const getStatusData = async () => {
+    try {
+      let response = await getStatusMenu();
+      setStatusMenu(
+        response.data.map((item) => ({
+          id: item.id,
+          label: item.status,
+        }))
+      );
+    } catch (error) {
+      console.error("Error fetching status dropdown:", error);
+    }
   };
 
   return (
     <Container>
       <Box textAlign="center" mb={3}>
-        <Typography variant="h4" style={{ fontWeight: "bold", color: "#6a11cb" }}>
-          Add New User
+        <Typography
+          variant="h4"
+          style={{ fontWeight: "bold", color: "#6a11cb" }}
+        >
+          Add New Candidate
         </Typography>
         <Typography variant="subtitle1" style={{ color: "#757575" }}>
-          Fill the details below to add a new user to the system
+          Fill the details below to add a new candidate to the system
         </Typography>
       </Box>
-      <StyledFormControl>
-        <InputLabel>Id</InputLabel>
-        <Input onChange={onValueChange} name="_id" />
-      </StyledFormControl>
       <StyledFormControl>
         <InputLabel>Name</InputLabel>
         <Input onChange={onValueChange} name="name" />
@@ -119,14 +150,30 @@ const AddUser = () => {
       </StyledFormControl>
       <StyledFormControl>
         <InputLabel>Date/Time</InputLabel>
-        <Input onChange={onValueChange} name="date" />
+        <Input type="date" value={user.date} onChange={onDateChange} name="date" />
       </StyledFormControl>
       <StyledFormControl>
-        <InputLabel>Status</InputLabel>
-        <Input onChange={onValueChange} name="status" />
+        <Autocomplete
+          disablePortal
+          margin="normal"
+          fullWidth
+          id="candidateStatus"
+          name="candidateStatus"
+          size="small"
+          options={statusMenu}
+          value={selectedStatus}
+          onChange={(e, value) => {
+            setSelectedStatus(value);
+          }}
+          getOptionLabel={(value) => value.label}
+          sx={{ width: "100%", mt: 2, mb: 1 }}
+          renderInput={(params) => (
+            <TextField {...params} label="Select Status" placeholder="Status" />
+          )}
+        />
       </StyledFormControl>
       <SubmitButton variant="contained" onClick={AddUserDetails}>
-        Add User
+        Add Candidate
       </SubmitButton>
     </Container>
   );

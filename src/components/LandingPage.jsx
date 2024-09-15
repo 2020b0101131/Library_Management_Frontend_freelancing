@@ -312,7 +312,7 @@ const LandingPage = () => {
     </div>
   </div> */}
   {/* Contact*/}
-  <section className="page-section" id="contact">
+  <section style={{marginBottom:"3rem"}}className="page-section" id="contact">
     <div className="container">
       <div className="text-center">
         <h2 className="section-heading text-uppercase">Contact Us</h2>
@@ -603,12 +603,7 @@ const LandingPage = () => {
       </div>
     </div>
   </div>
-  {/* Bootstrap core JS*/}
-  {/* Core theme JS*/}
-  {/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/}
-  {/* * *                               SB Forms JS                               * **/}
-  {/* * * Activate your form at https://startbootstrap.com/solution/contact-forms * **/}
-  {/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/}
+ 
 </div>
 
 

@@ -3,11 +3,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { registerUser } from "../service/Api.jsx";
 import logo from "../img/logo_interview.png";
 import "../style/loginRegister.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import Loader from "../components/Loader"; // Import the custom Loader component
 
 const Register = () => {
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
@@ -18,7 +18,8 @@ const Register = () => {
     e.preventDefault();
     setLoading(true); // Start loading
     try {
-      const response = await registerUser({ username, email, password });
+      const response = await registerUser({ name, email, password });
+      localStorage.setItem("token", response.data.token);
       alert("Registered Successfully");
       navigate("/userprofile", { state: response.data });
     } catch (error) {
@@ -29,7 +30,7 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container px-3 " style={{ marginBottom: '4rem', }}>
+    <div className="register-container px-3 " style={{ marginBottom: "4rem" }}>
       <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
         <div className="container">
           <a className="navbar-brand" href="#page-top">
@@ -38,15 +39,33 @@ const Register = () => {
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <NavLink className="nav-link" to="/">Home</NavLink>
+                <NavLink className="nav-link" to="/">
+                  Home
+                </NavLink>
               </li>
             </ul>
           </div>
         </div>
       </nav>
-      <marquee className="fixed-top "id="gfg" style={{backgroundColor:'yellow',marginTop: '4rem'}}><b>Notice: Due to high server traffic, registration may take a few moments. We appreciate your patience.</b></marquee>
+      <marquee
+        className="fixed-top "
+        id="gfg"
+        style={{ backgroundColor: "yellow", marginTop: "4rem" }}
+      >
+        <b>
+          Notice: Due to high server traffic, registration may take a few
+          moments. We appreciate your patience.
+        </b>
+      </marquee>
 
-      <div className="register-card" style={{ height: {md:'80vh'}, marginTop: "5rem", position: 'relative', }}>
+      <div
+        className="register-card"
+        style={{
+          height: { md: "80vh" },
+          marginTop: "5rem",
+          position: "relative",
+        }}
+      >
         {loading && (
           <div className="text-center mb-4">
             <div className="spinner-border" role="status">
@@ -61,8 +80,8 @@ const Register = () => {
               type="text"
               className="form-control"
               placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               required
             />
           </div>
@@ -105,7 +124,12 @@ const Register = () => {
           </button>
         </form>
         <div className="text-center mt-4">
-          <p>Already have an account? <NavLink to="/login" className="link">Sign In</NavLink></p>
+          <p>
+            Already have an account?{" "}
+            <NavLink to="/login" className="link">
+              Sign In
+            </NavLink>
+          </p>
         </div>
       </div>
     </div>

@@ -28,7 +28,6 @@ const MeetingRoom = () => {
       },
       showScreenSharingButton: true,
       showPreJoinView: true,
-      
     });
   };
   return (

@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { loginUser } from "../service/Api.jsx";
 import logo from "../img/logo_interview.png";
-import "../style/loginRegister.css"; 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Toast, ToastContainer } from 'react-bootstrap';
-
+import "../style/loginRegister.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Toast, ToastContainer } from "react-bootstrap";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -22,9 +21,14 @@ const Login = () => {
     try {
       const backend_response = await loginUser({ email, password });
       setToastMessage(backend_response.data.message);
-      setToastType(backend_response.data.message === "Login Successful" ? "success" : "warning");
+      setToastType(
+        backend_response.data.message === "Login Successful"
+          ? "success"
+          : "warning"
+      );
       setShowToast(true); // Show the toast
       if (backend_response.data.message === "Login Successful") {
+        localStorage.setItem("token", backend_response.data.token);
         setTimeout(() => navigate("/codeforuser"), 1000); // Navigate after 1 second
       }
     } catch (error) {
@@ -69,17 +73,37 @@ const Login = () => {
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <NavLink className="nav-link" to="/">Home</NavLink>
+                <NavLink className="nav-link" to="/">
+                  Home
+                </NavLink>
               </li>
             </ul>
           </div>
         </div>
       </nav>
-      <marquee className="fixed-top "id="gfg" style={{backgroundColor:'yellow',marginTop: '4rem'}}><b>Notice: Due to high server traffic, signing in may take a few moments. We appreciate your patience.</b></marquee>
+      <marquee
+        className="fixed-top "
+        id="gfg"
+        style={{ backgroundColor: "yellow", marginTop: "4rem" }}
+      >
+        <b>
+          Notice: Due to high server traffic, signing in may take a few moments.
+          We appreciate your patience.
+        </b>
+      </marquee>
 
-      <div className="login-card " style={{ height: {md:'80vh'}, marginTop:'1rem' }}>
+      <div
+        className="login-card "
+        style={{ height: { md: "80vh" }, marginTop: "1rem" }}
+      >
         <h2 className="text-center mb-4">Welcome to InterviewG</h2>
-        {loading && <div className="text-center mb-4"><div className="spinner-border" role="status"><span className="visually-hidden">Loading...</span></div></div>}
+        {loading && (
+          <div className="text-center mb-4">
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        )}
         <form className="form">
           <div className="form-outline">
             <input
@@ -105,14 +129,24 @@ const Login = () => {
             <label className="form-check-label">
               <input type="checkbox" defaultChecked /> Remember me
             </label>
-            <NavLink to="#!" className="forgot-link">Forgot password?</NavLink>
+            <NavLink to="#!" className="forgot-link">
+              Forgot password?
+            </NavLink>
           </div>
-          <button className="btn gradient-btn w-100 mt-3" onClick={(e) => handleSign(e)}>
+          <button
+            className="btn gradient-btn w-100 mt-3"
+            onClick={(e) => handleSign(e)}
+          >
             Sign In
           </button>
         </form>
         <div className="text-center mt-4">
-          <p>Not a member? <NavLink to="/register" className="link">Register Now</NavLink></p>
+          <p>
+            Not a member?{" "}
+            <NavLink to="/register" className="link">
+              Register Now
+            </NavLink>
+          </p>
         </div>
       </div>
 

@@ -1,37 +1,63 @@
 import axios from "axios";
 
 const URL = process.env.REACT_APP_URL;
-///////////////////////////////////////////////////////////////
+// <======================Candidate CRUD API======================>
 export const addUser = async (data) => {
   try {
-    console.log("api service::",data);
-    return await axios.post(`${URL}/adduser`, data);
+    // console.log("api service::",data);
+    return await axios.post(`${URL}/candidates/add`, data, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+    });
   } catch (error) {
     console.log("Error in addUser", error);
+  }
+};
+export const getStatusMenu = async () => {
+  try {
+    return await axios.get(`${URL}/statuses`);
+  } catch (error) {
+    console.log("Error in getStatusMenu", error);
   }
 };
 ////////////////////////////////////////////////////////////////
 export const getUsers = async () => {
   try {
-    return await axios.get(`${URL}/all`);
+    return await axios.get(`${URL}/candidates/all`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+    });
   } catch (error) {
     console.log("Error while getUser", error);
   }
 };
 ////////////////////////////////////////////////////////////////
 export const getUser = async (id) => {
-  console.log("getUser",id);
+  console.log("getUser", id);
   try {
-    return await axios.get(`${URL}/${id}`);
+    return await axios.get(`${URL}/candidates/${id}`,{
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+    });//Getting single candidate for showing data to user on edit
   } catch (error) {
     console.log("error while getting a single user", error);
   }
 };
 ////////////////////////////////////////////////////////////////
 export const editUser = async (user, id) => {
- 
   try {
-    return await axios.put(`${URL}/${id}`, user);
+    return await axios.put(`${URL}/candidates/edit/${id}`, user, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+    });
   } catch (error) {
     console.log("Error during editUser api", error);
   }
@@ -39,51 +65,80 @@ export const editUser = async (user, id) => {
 ////////////////////////////////////////////////////////////////
 export const deleteUser = async (id) => {
   try {
-    return await axios.delete(`${URL}/${id}`);
+    return await axios.delete(`${URL}/candidates/delete/${id}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+    });
   } catch (error) {
     console.log("Error while using deleteUser api", error);
   }
 };
-///////////////////////////////////////////////////////////////
-export const registerUser=async(data)=>{
-  try{
-    return await axios.post(`${URL}/registeruser`,data);
-  }catch(error){
-    console.log("Error while registerUser",error);
-  }
-}
-///////////////////////////////////////////////////////////////
-export const loginUser=async(data)=>{
-  try{
-    return await axios.post(`${URL}/loginuser`,data);
-  }catch(error){
-    console.log("Error while loginUser",error);
-  }
-}
-/////////////////////////////////////////////////////////////
-export const userProfile=async()=>{
-  try{
-    return await axios.get(`${URL}/userprofile`)
-  }catch(error){
-    console.log("Error while getProfile",error);
-  }
-}
-////////////////////////////////////////////////////////////
-export const addData=async(data)=>{
-  console.log("Today data",data);
-try{
-return await axios.post(`${URL}/adddata`,data)
-}catch(error){
-console.log("Error while addData",error);
-}
-}
-//////////////////////////////////////////////////////////
-export const display = async () => {
+
+// <======================Register/Login API======================>
+
+export const registerUser = async (data) => {
   try {
-    return await axios.get(`${URL}/alldata`);
+    return await axios.post(`${URL}/users/register`, data);
   } catch (error) {
-    console.log("Error while getUser", error);
+    console.log("Error while registerUser", error);
   }
 };
-////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+export const loginUser = async (data) => {
+  try {
+    return await axios.post(`${URL}/users/login`, data);
+  } catch (error) {
+    console.log("Error while loginUser", error);
+  }
+};
 
+/////////////////////////////////////////////////////////////
+export const userProfile = async () => {
+  try {
+    return await axios.get(`${URL}/userprofile`);
+  } catch (error) {
+    console.log("Error while getProfile", error);
+  }
+};
+
+// <======================Question API======================>
+export const addQuestion = async (data) => {
+  try {
+    return await axios.post(`${URL}/questions/add`, data, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (error) {
+    console.log("Error while add question", error);
+  }
+};
+///////////////////////////////////////////////
+export const display = async (pageId) => {
+  try {
+    return await axios.get(`${URL}/questions/${pageId}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (error) {
+    console.log("Error while get Question", error);
+  }
+};
+////////////////////////////////////////////////////////////////
+export const deleteQuestion = async (id) => {
+  try {
+    return await axios.delete(`${URL}/questions/${id}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (error) {
+    console.log("Error while using delete Question api", error);
+  }
+};

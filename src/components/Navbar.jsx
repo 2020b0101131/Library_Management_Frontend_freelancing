@@ -34,28 +34,28 @@ const Navbar = () => {
           ></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
+          <ul className="navbar-nav ms-auto" >
+            <li className="nav-item" style={{marginTop:"5px"}}>
               <NavLink className="nav-link text-light" to="/codeforuser">
-                Code for Interview
+              Interview Q&A
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" style={{marginTop:"5px"}}>
               <NavLink className="nav-link text-light" to="/allusers">
-                All Users
+                All Candidates
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" style={{marginTop:"5px"}}>
               <NavLink className="nav-link text-light" to="/adduser">
-                Add User
+                Add Candidate
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" style={{marginTop:"5px"}}>
               <NavLink className="nav-link text-light" to="/room">
                 Schedule Interview
               </NavLink>
             </li>
-            <li className="nav-item" >
+            <li className="nav-item">
               <div class="dropdown">
                 <button
                   class="btn btn-dark dropdown-toggle"
@@ -83,7 +83,7 @@ const Navbar = () => {
 
                 <ul
                   class="dropdown-menu dropdown-menu-end"
-                  style={{ backgroundColor: "#212529",textAlign:"center", }}
+                  style={{ backgroundColor: "#212529", textAlign: "center" }}
                 >
                   <li>
                     {" "}
@@ -120,7 +120,13 @@ const Navbar = () => {
                           d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"
                         />
                       </svg>{" "}
-                      <span>Logout</span>
+                      <span
+                        onClick={() => {
+                          localStorage.removeItem("authToken");
+                        }}
+                      >
+                        Logout
+                      </span>
                     </NavLink>
                   </li>
                 </ul>
