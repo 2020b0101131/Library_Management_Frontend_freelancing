@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from "react-router-dom";
 import int0 from '../img/int0.jpg';
 import int00 from '../img/int00.jpg';
@@ -15,7 +15,45 @@ import skill_testing from "../img/skill_testing.png"
 import interview_collaboration from "../img/interview_collaboration.jpeg"
 import "../startbootstrap-agency-gh-pages/css/styles.css"
 
+
+
 const LandingPage = () => {
+  const [msg, setMsg] = useState('');
+  const [contactDetails, setContactDetails] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  const handleChange=(e)=>{
+    e.preventDefault();
+    const {name,value}=e.target;
+    setContactDetails((prevDetails) => ({
+      ...prevDetails,      // Merge the existing contact details
+      [name]: value,       // Update only the specific field
+    }));
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true); // Start loading
+    const form = e.target;
+    // console.log("form::",form)
+    // const scriptURL = process.env.CONTACT_FORM_API;
+    const scriptURL=`${process.env.REACT_APP_URL}/contact/detail`
+    //const formData = new FormData(form);
+    const payload=contactDetails;
+    fetch(scriptURL, { method: 'POST',  headers: {
+      'Content-Type': 'application/json'
+  },body: JSON.stringify(payload) })
+      .then((response) => {
+        setMsg('Message sent successfully.');
+        setTimeout(() => setMsg(''), 5000);
+        setContactDetails({});
+        setLoading(false); // Stop loading
+        form.reset();
+      })
+      .catch((error) => {
+        console.error('Error!', error.message);
+        setLoading(false); // Stop loading
+      });
+  };
   return (
     <div className='container'>
   <nav style={{backgroundColor: '#000000'}} className="navbar navbar-expand-lg  fixed-top  " id="mainNav">
@@ -325,30 +363,30 @@ const LandingPage = () => {
       {/* To make this form functional, sign up at*/}
       {/* https://startbootstrap.com/solution/contact-forms*/}
       {/* to get an API token!*/}
-      <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+      <form id="contactForm" name="submit-to-google-sheet" data-sb-form-api-token="API_TOKEN" onSubmit={handleSubmit}>
         <div className="row align-items-stretch mb-5">
           <div className="col-md-6">
             <div className="form-group">
               {/* Name input*/}
-              <input className="form-control" id="name" type="text" placeholder="Your Name *" data-sb-validations="required" />
+              <input className="form-control" onChange={handleChange} name="name" id="name" type="text" value={contactDetails.name} placeholder="Your Name *" data-sb-validations="required" />
               <div className="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
             </div>
             <div className="form-group">
               {/* Email address input*/}
-              <input className="form-control" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email" />
+              <input className="form-control" onChange={handleChange}  id="email" name="email" type="email" value={contactDetails.email} placeholder="Your Email *" data-sb-validations="required,email" />
               <div className="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
               <div className="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
             </div>
             <div className="form-group mb-md-0">
               {/* Phone number input*/}
-              <input className="form-control" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required" />
+              <input className="form-control" onChange={handleChange} name="phone" id="phone" type="tel" value={contactDetails.phone} placeholder="Your Phone *" data-sb-validations="required" />
               <div className="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
             </div>
           </div>
           <div className="col-md-6">
             <div className="form-group form-group-textarea mb-md-0">
               {/* Message input*/}
-              <textarea className="form-control" id="message" placeholder="Your Message *" data-sb-validations="required" defaultValue={""} />
+              <textarea className="form-control" onChange={handleChange} name="message" id="message" value={contactDetails.message}  placeholder="Your Message *" data-sb-validations="required" defaultValue={""} />
               <div className="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
             </div>
           </div>
@@ -371,7 +409,17 @@ const LandingPage = () => {
         {/* an error submitting the form*/}
         <div className="d-none" id="submitErrorMessage"><div className="text-center text-danger mb-3">Error sending message!</div></div>
         {/* Submit Button*/}
-        <div className="text-center"><button className="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">Send Message</button></div>
+        <div className="text-center"><button className="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit" disabled={loading}> {loading ? "Sending Message..." : "Send Message"}</button>
+        {loading && (
+          <div style={{color:"white",marginTop:"2rem"}} className="text-center mb-4">
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        )}
+        
+        
+        </div>
       </form>
     </div>
   </section>
