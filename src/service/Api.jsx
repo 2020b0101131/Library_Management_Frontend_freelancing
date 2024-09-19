@@ -145,10 +145,10 @@ export const deleteQuestion = async (id) => {
 // <======================Candidate Profile API======================>
   export const addProfile = async (data) => {
     try {
-      return await axios.post(`${URL}/dashboard/add-profile`, data, {
+      return await axios.patch(`${URL}/dashboard/add-profile`, data, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
-          "Content-Type": "application/json",
+          // "Content-Type": "multipart/form-data",
         },
       });
     } catch (error) {

@@ -124,16 +124,18 @@ const UserProfile = () => {
     }
   };
 
-  useEffect(() => {
-    if (location.state) {
-      setUsername(location.state.username || "John Doe");
-      setEmail(location.state.email || "john.doe@example.com");
-    }
-  }, [location.state]);
+  // useEffect(() => {
+  //   if (location.state) {
+  //     setUsername(location.state.username || "John Doe");
+  //     setEmail(location.state.email || "john.doe@example.com");
+  //   }
+  // }, [location.state]);
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
+    // console.log("files::",files[0].name)
     if (type === 'file') {
+      // console.log("files::",files[0])
       setFormData({ ...formData, file: files[0] });
     } else {
       setFormData({ ...formData, [name]: value });
@@ -150,9 +152,9 @@ const UserProfile = () => {
       const data = new FormData();
       data.append('username', formData.username);
       data.append('bio', formData.bio);
-      data.append('email', formData.email);
       if (formData.file) {
-        data.append('file', formData.file);
+        // console.log("fff::",formData.file)
+        data.append('img', formData?.file);
       }
       await addProfile(data);
       getProfile(); // Refresh the profile information
@@ -274,15 +276,7 @@ const UserProfile = () => {
             value={formData.bio}
             onChange={handleChange}
           />
-          <TextField
-            margin="dense"
-            label="Email"
-            type="email"
-            fullWidth
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
+         
           <input
             accept="image/*"
             type="file"
