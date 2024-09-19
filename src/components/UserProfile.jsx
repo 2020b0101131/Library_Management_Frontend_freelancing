@@ -17,6 +17,8 @@ import {
 import { styled } from "@mui/material/styles";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { displayProfile, addProfile } from "../service/Api.jsx";
+import Loader from "./Loader"; // Import the Loader component
 
 const ProfileContainer = styled("div")(({ theme }) => ({
   padding: theme.spacing(5),
@@ -56,7 +58,7 @@ const StatsSection = styled("div")({
 const StatCard = styled(Card)(({ theme }) => ({
   padding: theme.spacing(3),
   textAlign: "center",
-  width: "30%",
+  width: "24%",
   boxShadow: theme.shadows[2],
   transition: "transform 0.3s ease",
   "&:hover": {
@@ -71,6 +73,8 @@ const GraphSection = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
   borderRadius: "10px",
   boxShadow: theme.shadows[2],
+  width: "100%",
+  overflowX: "auto",
 }));
 
 const StyledButton = styled(Button)(({ theme }) => ({
@@ -85,12 +89,40 @@ const StyledButton = styled(Button)(({ theme }) => ({
 
 const UserProfile = () => {
   const location = useLocation();
-  const [username, setUsername] = useState("John Doe");
-  const [bio, setBio] = useState("Experienced interviewer in tech industry");
+  const [username, setUsername] = useState("");
+  const [bio, setBio] = useState("");
   const [email, setEmail] = useState("");
-  const [notifications, setNotifications] = useState(3);
+  const [notifications, setNotifications] = useState(0);
   const [openEditModal, setOpenEditModal] = useState(false);
-  const [profileImage, setProfileImage] = useState("https://randomuser.me/api/portraits/men/75.jpg");
+  const [profileInfo, setProfileInfo] = useState([]);
+  const [profileImage, setProfileImage] = useState("");
+  const [loading, setLoading] = useState(true); // State for loading
+  const [formData, setFormData] = useState({
+    username: '',
+    bio: '',
+    email: '',
+    file: null,
+  });
+
+  useEffect(() => {
+    getProfile();
+  }, []);
+
+  const getProfile = async () => {
+    try {
+      let response = await displayProfile();
+      setProfileInfo(response.data);
+      const profileData = response.data;
+      setUsername(profileData?.userProfile[0]?.name);
+      setBio(profileData?.userProfile[0]?.bio);
+      setEmail(profileData?.userProfile[0]?.email);
+      setProfileImage(`${process.env.REACT_APP_URL2}${profileData?.userProfile[0]?.profile_image_url}`);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    } finally {
+      setLoading(false); // Set loading to false when data is fetched
+    }
+  };
 
   useEffect(() => {
     if (location.state) {
@@ -99,11 +131,34 @@ const UserProfile = () => {
     }
   }, [location.state]);
 
+  const handleChange = (e) => {
+    const { name, value, type, files } = e.target;
+    if (type === 'file') {
+      setFormData({ ...formData, file: files[0] });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+  };
+
   const handleEditProfile = () => {
     setOpenEditModal(true);
   };
 
-  const handleCloseEditModal = () => {
+  const handleCloseEditModal = async () => {
+    try {
+      // Create FormData object to handle file uploads
+      const data = new FormData();
+      data.append('username', formData.username);
+      data.append('bio', formData.bio);
+      data.append('email', formData.email);
+      if (formData.file) {
+        data.append('file', formData.file);
+      }
+      await addProfile(data);
+      getProfile(); // Refresh the profile information
+    } catch (error) {
+      console.log("Error in profile update:", error);
+    }
     setOpenEditModal(false);
   };
 
@@ -115,17 +170,17 @@ const UserProfile = () => {
     }
   };
 
-  const data = [
-    { name: "Jan", interviews: 10 },
-    { name: "Feb", interviews: 15 },
-    { name: "Mar", interviews: 12 },
-    { name: "Apr", interviews: 20 },
-    { name: "May", interviews: 25 },
-    { name: "Jun", interviews: 18 },
-  ];
+  const data = profileInfo?.interviewStats?.map((item) => ({
+    name: item.month,
+    interviews: item.interviews_count,
+  }));
+
+  if (loading) {
+    return <Loader />; // Show loader while loading
+  }
 
   return (
-    <div className="container" style={{marginTop:"4rem",marginBottom:"4rem"}}>
+    <div className="container" style={{ marginTop: "4rem", marginBottom: "4rem" }}>
       <ProfileContainer>
         <ProfileHeader>
           <div style={{ display: "flex", alignItems: "center" }}>
@@ -163,25 +218,29 @@ const UserProfile = () => {
         {/* Add activity cards here... */}
 
         <StatsSection>
-          <StatCard>
-            <Typography variant="h6" style={{ fontWeight: 600 }}>20</Typography>
-            <Typography variant="body2" color="textSecondary">Interviews Conducted</Typography>
+          <StatCard style={{ background: 'linear-gradient(135deg, #66ccff, #0033cc)', color: "white" }}>
+            <Typography variant="h6" style={{ fontWeight: 600 }}>{profileInfo?.statistics[0]?.interviews_conducted ?? "No data found"}</Typography>
+            <Typography variant="body2">Interviews Conducted</Typography>
           </StatCard>
-          <StatCard>
-            <Typography variant="h6" style={{ fontWeight: 600 }}>15</Typography>
-            <Typography variant="body2" color="textSecondary">Feedbacks Given</Typography>
+          <StatCard style={{ background: 'linear-gradient(135deg, #66ff66, #009900)', color: 'white' }}>
+            <Typography variant="h6" style={{ fontWeight: 600 }}>{profileInfo?.statistics[0]?.selected_count ?? "No data found"}</Typography>
+            <Typography variant="body2">Selected Candidates</Typography>
           </StatCard>
-          <StatCard>
-            <Typography variant="h6" style={{ fontWeight: 600 }}>4.8</Typography>
-            <Typography variant="body2" color="textSecondary">Average Rating</Typography>
+          <StatCard style={{ background: 'linear-gradient(135deg, #ffcc33, #b38b00)', color: "white" }}>
+            <Typography variant="h6" style={{ fontWeight: 600 }}>{profileInfo?.statistics[0]?.pending_count ?? "No data found"}</Typography>
+            <Typography variant="body2">Pending Candidates</Typography>
+          </StatCard>
+          <StatCard style={{ background: "linear-gradient(135deg, #ff4d4d, #b30000)", color: "white" }}>
+            <Typography variant="h6" style={{ fontWeight: 600 }}>{profileInfo?.statistics[0]?.rejected_count ?? "No data found"}</Typography>
+            <Typography variant="body2">Rejected Candidates</Typography>
           </StatCard>
         </StatsSection>
 
-        <GraphSection>
+        <GraphSection style={{ background: 'linear-gradient(135deg, #e0f7fa, #f3e5f5)', padding: '30px', borderRadius: '15px', color: 'black' }}>
           <Typography variant="h6" style={{ fontWeight: 500 }}>
             Interviews Conducted Over Time
           </Typography>
-          <LineChart width={500} height={300} data={data}>
+          <LineChart width={950} height={300} data={data}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis />
@@ -190,16 +249,10 @@ const UserProfile = () => {
             <Line type="monotone" dataKey="interviews" stroke="#8884d8" strokeWidth={2} />
           </LineChart>
         </GraphSection>
-
-        <div className="text-center mt-4">
-          <StyledButton variant="contained" color="secondary">
-            Go to Settings
-          </StyledButton>
-        </div>
       </ProfileContainer>
 
       {/* Edit Profile Modal */}
-      <Dialog open={openEditModal} onClose={handleCloseEditModal}>
+      <Dialog open={openEditModal} onClose={() => setOpenEditModal(false)}>
         <DialogTitle>Edit Profile</DialogTitle>
         <DialogContent>
           <TextField
@@ -208,34 +261,37 @@ const UserProfile = () => {
             label="Username"
             type="text"
             fullWidth
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
           />
           <TextField
             margin="dense"
             label="Bio"
             type="text"
             fullWidth
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
+            name="bio"
+            value={formData.bio}
+            onChange={handleChange}
           />
           <TextField
             margin="dense"
             label="Email"
             type="email"
             fullWidth
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
           />
           <input
             accept="image/*"
             type="file"
             style={{ marginTop: "1rem" }}
-            onChange={handleProfileImageChange}
+            onChange={handleChange}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseEditModal} color="primary">
+          <Button onClick={() => setOpenEditModal(false)} color="primary">
             Cancel
           </Button>
           <Button onClick={handleCloseEditModal} color="primary">

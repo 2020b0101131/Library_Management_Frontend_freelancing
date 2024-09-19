@@ -84,6 +84,7 @@ const AddUser = () => {
   const [user, setUser] = useState(defaultValue);
   const [statusMenu, setStatusMenu] = useState([]);
   const [selectedStatus, setSelectedStatus] = useState(null);
+  const [errors, setErrors] = useState({}); // To store validation errors
 
   const onValueChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -93,7 +94,20 @@ const AddUser = () => {
     setUser({ ...user, date: e.target.value });
   };
 
+  const validateForm = () => {
+    let newErrors = {};
+    if (!user.name) newErrors.name = "Name is required";
+    if (!user.email_id) newErrors.email_id = "Email is required";
+    if (!user.phone) newErrors.phone = "Phone number is required";
+    if (!user.date) newErrors.date = "Date is required";
+    if (!selectedStatus) newErrors.status = "Status is required";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; // Returns true if no errors
+  };
+
   const AddUserDetails = async () => {
+    if (!validateForm()) return; // Prevent submission if validation fails
+
     const postData = {
       name: user.name,
       email: user.email_id,
@@ -136,23 +150,27 @@ const AddUser = () => {
           Fill the details below to add a new candidate to the system
         </Typography>
       </Box>
-      <StyledFormControl>
+      <StyledFormControl error={!!errors.name}>
         <InputLabel>Name</InputLabel>
-        <Input onChange={onValueChange} name="name" />
+        <Input required onChange={onValueChange} name="name" />
+        {errors.name && <Typography color="error">{errors.name}</Typography>}
       </StyledFormControl>
-      <StyledFormControl>
+      <StyledFormControl error={!!errors.email_id}>
         <InputLabel>Email</InputLabel>
-        <Input onChange={onValueChange} name="email_id" />
+        <Input required onChange={onValueChange} name="email_id" />
+        {errors.email_id && <Typography color="error">{errors.email_id}</Typography>}
       </StyledFormControl>
-      <StyledFormControl>
+      <StyledFormControl error={!!errors.phone}>
         <InputLabel>Phone</InputLabel>
-        <Input onChange={onValueChange} name="phone" />
+        <Input required onChange={onValueChange} name="phone" />
+        {errors.phone && <Typography color="error">{errors.phone}</Typography>}
       </StyledFormControl>
-      <StyledFormControl >
+      <StyledFormControl error={!!errors.date}>
         <InputLabel>Date/Time</InputLabel>
-        <Input type="date" value={user.date || " "} onChange={onDateChange} name="date" />
+        <Input required type="date" value={user.date || " "} onChange={onDateChange} name="date" />
+        {errors.date && <Typography color="error">{errors.date}</Typography>}
       </StyledFormControl>
-      <StyledFormControl>
+      <StyledFormControl error={!!errors.status}>
         <Autocomplete
           disablePortal
           margin="normal"
@@ -168,9 +186,10 @@ const AddUser = () => {
           getOptionLabel={(value) => value.label}
           sx={{ width: "100%", mt: 2, mb: 1 }}
           renderInput={(params) => (
-            <TextField {...params} label="Select Status" placeholder="Status" />
+            <TextField {...params} label="Select Status" placeholder="Status" required />
           )}
         />
+        {errors.status && <Typography color="error">{errors.status}</Typography>}
       </StyledFormControl>
       <SubmitButton variant="contained" onClick={AddUserDetails}>
         Add Candidate

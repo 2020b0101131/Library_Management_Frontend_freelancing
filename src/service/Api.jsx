@@ -142,3 +142,29 @@ export const deleteQuestion = async (id) => {
     console.log("Error while using delete Question api", error);
   }
 };
+// <======================Candidate Profile API======================>
+  export const addProfile = async (data) => {
+    try {
+      return await axios.post(`${URL}/dashboard/add-profile`, data, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
+      });
+    } catch (error) {
+      console.log("Error while adding profile info", error);
+    }
+  };
+  ///////////////////////////////////////////////
+  export const displayProfile = async (pageId) => {
+    try {
+      return await axios.get(`${URL}/dashboard/profile`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
+      });
+    } catch (error) {
+      console.log("Error while get Profile info", error);
+    }
+  };
