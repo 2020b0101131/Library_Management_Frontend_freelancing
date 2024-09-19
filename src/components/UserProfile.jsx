@@ -32,6 +32,9 @@ const ProfileHeader = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "space-between",
   marginBottom: theme.spacing(4),
+  [theme.breakpoints.down('xs')]: {
+    flexDirection: 'column',
+  },
 }));
 
 const ProfileDetails = styled("div")({
@@ -58,7 +61,7 @@ const StatsSection = styled("div")({
 const StatCard = styled(Card)(({ theme }) => ({
   padding: theme.spacing(3),
   textAlign: "center",
-  width: "24%",
+  // width: {},
   boxShadow: theme.shadows[2],
   transition: "transform 0.3s ease",
   "&:hover": {
@@ -184,8 +187,8 @@ const UserProfile = () => {
   return (
     <div className="container" style={{ marginTop: "4rem", marginBottom: "4rem" }}>
       <ProfileContainer>
-        <ProfileHeader>
-          <div style={{ display: "flex", alignItems: "center" }}>
+        <ProfileHeader sx={{flexDirection:{xs:"column",sm:"row"}}}>
+          <div style={{ display: "flex", alignItems: "center", }}>
             <UserProfileAvatar src={profileImage} />
             <ProfileDetails>
               <Typography variant="h4" component="div" style={{ fontWeight: 600 }}>
@@ -199,15 +202,15 @@ const UserProfile = () => {
               </Typography>
             </ProfileDetails>
           </div>
-          <div>
+          <div >
             <StyledButton variant="outlined" color="primary" onClick={handleEditProfile} style={{ marginRight: "1rem" }}>
               Edit Profile
             </StyledButton>
-            <Badge badgeContent={notifications} color="error" overlap="rectangular">
+            {/* <Badge badgeContent={notifications} color="error" overlap="rectangular">
               <IconButton aria-label="notifications">
                 <i className="fas fa-bell" style={{ fontSize: "1.5rem" }} />
               </IconButton>
-            </Badge>
+            </Badge> */}
           </div>
         </ProfileHeader>
 
@@ -219,20 +222,20 @@ const UserProfile = () => {
 
         {/* Add activity cards here... */}
 
-        <StatsSection>
-          <StatCard style={{ background: 'linear-gradient(135deg, #66ccff, #0033cc)', color: "white" }}>
+        <StatsSection sx={{flexDirection:{xs:"column",sm:"row"}}}>
+          <StatCard sx={{ background: 'linear-gradient(135deg, #66ccff, #0033cc)', color: "white",marginBottom:{xs:2,sm:0},width:{md:"15rem"} }}>
             <Typography variant="h6" style={{ fontWeight: 600 }}>{profileInfo?.statistics[0]?.interviews_conducted ?? "No data found"}</Typography>
             <Typography variant="body2">Interviews Conducted</Typography>
           </StatCard>
-          <StatCard style={{ background: 'linear-gradient(135deg, #66ff66, #009900)', color: 'white' }}>
+          <StatCard sx={{ background: 'linear-gradient(135deg, #66ff66, #009900)', color: 'white',marginBottom:{xs:2,sm:0},width:{md:"15rem"} }}>
             <Typography variant="h6" style={{ fontWeight: 600 }}>{profileInfo?.statistics[0]?.selected_count ?? "No data found"}</Typography>
             <Typography variant="body2">Selected Candidates</Typography>
           </StatCard>
-          <StatCard style={{ background: 'linear-gradient(135deg, #ffcc33, #b38b00)', color: "white" }}>
+          <StatCard sx={{ background: 'linear-gradient(135deg, #ffcc33, #b38b00)', color: "white",marginBottom:{xs:2,sm:0},width:{md:"15rem"} }}>
             <Typography variant="h6" style={{ fontWeight: 600 }}>{profileInfo?.statistics[0]?.pending_count ?? "No data found"}</Typography>
             <Typography variant="body2">Pending Candidates</Typography>
           </StatCard>
-          <StatCard style={{ background: "linear-gradient(135deg, #ff4d4d, #b30000)", color: "white" }}>
+          <StatCard sx={{ background: "linear-gradient(135deg, #ff4d4d, #b30000)", color: "white",marginBottom:{xs:2,sm:0},width:{md:"15rem"} }}>
             <Typography variant="h6" style={{ fontWeight: 600 }}>{profileInfo?.statistics[0]?.rejected_count ?? "No data found"}</Typography>
             <Typography variant="body2">Rejected Candidates</Typography>
           </StatCard>
