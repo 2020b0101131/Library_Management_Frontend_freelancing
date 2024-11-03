@@ -11,26 +11,36 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
-  const [loading, setLoading] = useState(false); // Add loader state
+  const [mobileNo, setMobileNo] = useState("");
+  const [aadharNo, setAaadharno] = useState("");
+  const [libraryAddress, setLibraryAddress] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Start loading
+    setLoading(true);
     try {
-      const response = await registerUser({ name, email, password });
+      const response = await registerUser({
+        name,
+        email,
+        mobileNo,
+        aadharNo,
+        libraryAddress,
+        password,
+      });
       localStorage.setItem("token", response.data.token);
       alert("Registered Successfully");
       navigate("/userprofile", { state: response.data });
     } catch (error) {
       console.log("Error while registering", error);
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
 
   return (
-    <div className="register-container px-3 " style={{ marginBottom: "4rem" }}>
+    <div className="register-container px-3">
       <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
         <div className="container">
           <a className="navbar-brand" href="#page-top">
@@ -48,7 +58,7 @@ const Register = () => {
         </div>
       </nav>
       <marquee
-        className="fixed-top "
+        className="fixed-top"
         id="gfg"
         style={{ backgroundColor: "yellow", marginTop: "4rem" }}
       >
@@ -58,14 +68,7 @@ const Register = () => {
         </b>
       </marquee>
 
-      <div
-        className="register-card"
-        style={{
-          height: { md: "80vh" },
-          marginTop: "5rem",
-          position: "relative",
-        }}
-      >
+      <div className="register-card">
         {loading && (
           <div className="text-center mb-4">
             <div className="spinner-border" role="status">
@@ -107,6 +110,36 @@ const Register = () => {
           </div>
           <div className="form-outline">
             <input
+              type="number"
+              className="form-control"
+              placeholder="Mobile Number"
+              value={mobileNo}
+              onChange={(e) => setMobileNo(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-outline">
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Aadhar Number"
+              value={aadharNo}
+              onChange={(e) => setAaadharno(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-outline">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Library Address"
+              value={libraryAddress}
+              onChange={(e) => setLibraryAddress(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-outline">
+            <input
               type="password"
               className="form-control"
               placeholder="Confirm Password"
@@ -118,7 +151,7 @@ const Register = () => {
           <button
             className="btn gradient-btn w-100 mt-3"
             onClick={(e) => handleSubmit(e)}
-            disabled={loading} // Disable button when loading
+            disabled={loading}
           >
             {loading ? "Registering..." : "Register Now"}
           </button>

@@ -13,9 +13,9 @@ const Navbar = () => {
       }}
     >
       <div className="container-fluid">
-        <NavLink to="/" className="navbar-brand text-light">
+        {/* <NavLink to="/" className="navbar-brand text-light">
           <img src={logo} alt="logo" style={{ height: "40px" }} />
-        </NavLink>
+        </NavLink> */}
         <button
           className="navbar-toggler"
           type="button"
@@ -35,11 +35,11 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto" >
-            <li className="nav-item" style={{marginTop:"5px"}}>
+            {/* <li className="nav-item" style={{marginTop:"5px"}}>
               <NavLink className="nav-link text-light" to="/codeforuser">
               Interview Q&A
               </NavLink>
-            </li>
+            </li> */}
             <li className="nav-item" style={{marginTop:"5px"}}>
               <NavLink className="nav-link text-light" to="/allusers">
                 All Candidates
@@ -50,11 +50,11 @@ const Navbar = () => {
                 Add Candidate
               </NavLink>
             </li>
-            <li className="nav-item" style={{marginTop:"5px"}}>
+            {/* <li className="nav-item" style={{marginTop:"5px"}}>
               <NavLink className="nav-link text-light" to="/room">
                 Schedule Interview
               </NavLink>
-            </li>
+            </li> */}
             <li className="nav-item">
               <div class="dropdown">
                 <button
@@ -102,7 +102,7 @@ const Navbar = () => {
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink className="nav-link text-light" to="/login">
+                    <NavLink className="nav-link text-light" to="/">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"

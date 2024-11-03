@@ -8,7 +8,7 @@ import { Toast, ToastContainer } from "react-bootstrap";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
@@ -19,7 +19,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const backend_response = await loginUser({ email, password });
+      const backend_response = await loginUser({ identifier, password });
       setToastMessage(backend_response.data.message);
       setToastType(
         backend_response.data.message === "Login Successful"
@@ -29,7 +29,7 @@ const Login = () => {
       setShowToast(true); // Show the toast
       if (backend_response.data.message === "Login Successful") {
         localStorage.setItem("token", backend_response.data.token);
-        setTimeout(() => navigate("/codeforuser"), 1000); // Navigate after 1 second
+        setTimeout(() => navigate("/allusers"), 1000); // Navigate after 1 second
       }
     } catch (error) {
       setToastMessage("Login failed. Please try again.");
@@ -64,17 +64,17 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container p-3 mt-5 ">
-      <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div className="container">
-          <a className="navbar-brand" href="#page-top">
-            <img className="logo" src={logo} alt="logo" />
-          </a>
+    <div className="login-container p-3 mt-5  ">
+      <nav className="navbar navbar-expand-lg navbar-dark fixed-top h-5">
+        <div className="container ">
+          {/* <a className="navbar-brand" href="#page-top">
+            <img style={{display:"none"}} className="logo" src={logo} alt="logo" />
+          </a> */}
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/">
-                  Home
+              <li className="nav-item" >
+                <NavLink className="nav-link" style={{color:"black",fontSize:"22px",cursor:"none"}}>
+                  .
                 </NavLink>
               </li>
             </ul>
@@ -96,7 +96,7 @@ const Login = () => {
         className="login-card "
         style={{ height: { md: "80vh" }, marginTop: "1rem" }}
       >
-        <h2 className="text-center mb-4">Welcome to InterviewG</h2>
+        <h2 className="text-center mb-4">Welcome to Portal</h2>
         {loading && (
           <div className="text-center mb-4">
             <div className="spinner-border" role="status">
@@ -109,9 +109,9 @@ const Login = () => {
             <input
               type="email"
               className="form-control"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email ID/Mobile Number"
+              value={identifier}
+              onChange={(e) => setIdentifier(e.target.value)}
               required
             />
           </div>
@@ -125,14 +125,14 @@ const Login = () => {
               required
             />
           </div>
-          <div className="options d-flex justify-content-between">
+          {/* <div className="options d-flex justify-content-between">
             <label className="form-check-label">
               <input type="checkbox" defaultChecked /> Remember me
             </label>
             <NavLink to="#!" className="forgot-link">
               Forgot password?
             </NavLink>
-          </div>
+          </div> */}
           <button
             className="btn gradient-btn w-100 mt-3"
             onClick={(e) => handleSign(e)}
@@ -140,14 +140,14 @@ const Login = () => {
             Sign In
           </button>
         </form>
-        <div className="text-center mt-4">
+        {/* <div className="text-center mt-4">
           <p>
             Not a member?{" "}
             <NavLink to="/register" className="link">
               Register Now
             </NavLink>
           </p>
-        </div>
+        </div> */}
       </div>
 
       {/* Bootstrap Toasts */}

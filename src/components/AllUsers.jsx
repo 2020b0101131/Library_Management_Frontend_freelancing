@@ -112,7 +112,7 @@ const AllUsers = () => {
     <div className="container py-4">
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h3 style={{ color: "lightblue" }}>Candidate Management</h3>
-        <PDFButton onClick={generatePDF}>Save as PDF</PDFButton>
+        <PDFButton onClick={generatePDF}>Download PDF</PDFButton>
       </div>
       <ResponsiveTableWrapper>
         <StyledTable ref={componentPDF}>
@@ -120,78 +120,109 @@ const AllUsers = () => {
             <THead>
               <TableCell>Id</TableCell>
               <TableCell>Name</TableCell>
+              <TableCell>Father Name</TableCell>
               <TableCell>Email</TableCell>
               <TableCell>Phone</TableCell>
-              <TableCell>Date/Time</TableCell>
-              <TableCell>Status</TableCell>
+              <TableCell>Aadhar Number</TableCell>
+              <TableCell>Address</TableCell>
+              <TableCell>Joining Date</TableCell>
+              <TableCell>Amount Paid</TableCell>
               <TableCell className="d-print-none">Actions</TableCell>
             </THead>
           </TableHead>
-          <TableBody>
-            {users.map((user, index) => {
-              return (
-                <TBody key={index + 1}>
-                  <TableCell>{index + 1}</TableCell>
-                  <TableCell>{user.name}</TableCell>
-                  <TableCell>{user.email}</TableCell>
-                  <TableCell>{user.phone_no}</TableCell>
-                  <TableCell>{user.date}</TableCell>
-                  <TableCell>
-                    {user.status_id === 1 ? (
-                      <span
-                        style={{
-                          marginTop: "4px",
-                          backgroundColor: "#F9E400",
-                          borderRadius: "5px",
-                          padding: "8px",
-                        }}
+          <TableBody>  
+          {
+            users.length<=0?(
+              <>
+              <TBody key={0}>
+              <TableCell>0</TableCell>
+              <TableCell>---</TableCell>
+              <TableCell>---</TableCell>
+              <TableCell>---</TableCell>
+              <TableCell>---</TableCell>
+              <TableCell>---</TableCell>
+              <TableCell>---</TableCell>
+              <TableCell>---</TableCell>
+              <TableCell>---</TableCell>
+              <TableCell>---</TableCell>
+              </TBody>
+             
+              </>
+              
+            ):(
+              users.map((user, index) => {
+                return (
+                  <TBody key={index + 1}>
+                    <TableCell>{index + 1}</TableCell>
+                    <TableCell>{user.name}</TableCell>
+                    <TableCell>{user.father_name}</TableCell>
+                    <TableCell>{user.email}</TableCell>
+                    <TableCell>{user.mobile_no}</TableCell>
+                    <TableCell>{user.aadhar_no}</TableCell>
+                    <TableCell>{user.address}</TableCell>
+                    <TableCell>{user.joinDate}</TableCell>
+                    {/* <TableCell>
+                      {user.status_id === 1 ? (
+                        <span
+                          style={{
+                            marginTop: "4px",
+                            backgroundColor: "#F9E400",
+                            borderRadius: "5px",
+                            padding: "8px",
+                          }}
+                        >
+                          Pending
+                        </span>
+                      ) : user.status_id === 2 ? (
+                        <span
+                          style={{
+                            marginTop: "4px",
+                            backgroundColor: "#79D70F",
+                            borderRadius: "5px",
+                            padding: "8px",
+                          }}
+                        >
+                          Interviewed
+                        </span>
+                      ) : (
+                        <span
+                          style={{
+                            marginTop: "4px",
+                            backgroundColor: "#F5004F",
+                            borderRadius: "5px",
+                            padding: "8px",
+                          }}
+                        >
+                          Rejected
+                        </span>
+                      )}
+                    </TableCell> */}
+                     <TableCell>{user.fee_amount}</TableCell>
+  
+  
+                    <TableCell className="d-print-none">
+                      <StyledButton
+                        variant="contained"
+                        component={Link}
+                        to={`/edit/${user.student_id}`}
+                        style={{ marginRight: 10 }}
                       >
-                        Pending
-                      </span>
-                    ) : user.status_id === 2 ? (
-                      <span
-                        style={{
-                          marginTop: "4px",
-                          backgroundColor: "#79D70F",
-                          borderRadius: "5px",
-                          padding: "8px",
-                        }}
+                        Edit
+                      </StyledButton>
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        onClick={() => deleteUserDetails(user.student_id)}
                       >
-                        Interviewed
-                      </span>
-                    ) : (
-                      <span
-                        style={{
-                          marginTop: "4px",
-                          backgroundColor: "#F5004F",
-                          borderRadius: "5px",
-                          padding: "8px",
-                        }}
-                      >
-                        Rejected
-                      </span>
-                    )}
-                  </TableCell>
-                  <TableCell className="d-print-none">
-                    <StyledButton
-                      variant="contained"
-                      component={Link}
-                      to={`/edit/${user.id}`}
-                      style={{ marginRight: 10 }}
-                    >
-                      Edit
-                    </StyledButton>
-                    <Button
-                      variant="contained"
-                      color="secondary"
-                      onClick={() => deleteUserDetails(user.id)}
-                    >
-                      Delete
-                    </Button>
-                  </TableCell>
-                </TBody>
-              );
-            })}
+                        Delete
+                      </Button>
+                    </TableCell>
+                  </TBody>
+                );
+              }
+              )
+            )
+          }
           </TableBody>
         </StyledTable>
       </ResponsiveTableWrapper>

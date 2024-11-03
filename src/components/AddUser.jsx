@@ -73,33 +73,42 @@ const SubmitButton = styled(Button)(({ theme }) => ({
 const defaultValue = {
   _id: "",
   name: "",
-  email_id: "",
-  phone: "",
-  date: "",
-  status: "",
+  fatherName: "",
+  mobileNo: "",
+  email: "",
+  aadharNo: "",
+  address: "",
+  feeAmount: "",
+  joinDate: ""
 };
 
 const AddUser = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(defaultValue);
-  const [statusMenu, setStatusMenu] = useState([]);
+  const [statusMenu, setStatusMenu] = useState([{id:1,label:"Pending"},{id:2,label:"Paid"}]);
   const [selectedStatus, setSelectedStatus] = useState(null);
   const [errors, setErrors] = useState({}); // To store validation errors
 
   const onValueChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
+    console.log(setUser)
+   
   };
 
   const onDateChange = (e) => {
-    setUser({ ...user, date: e.target.value });
+    setUser({ ...user, joinDate: e.target.value });
   };
 
   const validateForm = () => {
     let newErrors = {};
     if (!user.name) newErrors.name = "Name is required";
-    if (!user.email_id) newErrors.email_id = "Email is required";
-    if (!user.phone) newErrors.phone = "Phone number is required";
-    if (!user.date) newErrors.date = "Date is required";
+    if (!user.fatherName) newErrors.fatherName = "Father Name is required";
+    if (!user.aadharNo) newErrors.aadharNo = "Aadhar Number is required";
+    if (!user.address) newErrors.address = "Address is required";
+    if (!user.feeAmount) newErrors.feeAmount = "Fee amount is required";
+    if (!user.mobileNo) newErrors.mobileNo = "Mobile Number number is required";
+    if (!user.email) newErrors.email = "Email is required";
+    if (!user.joinDate) newErrors.joinDate = "Date is required";
     if (!selectedStatus) newErrors.status = "Status is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0; // Returns true if no errors
@@ -110,32 +119,36 @@ const AddUser = () => {
 
     const postData = {
       name: user.name,
-      email: user.email_id,
-      phone_no: user.phone,
-      date: user.date,  // Include date in the submission
-      status_id: selectedStatus ? selectedStatus.id : null,
+      fatherName: user.fatherName,
+      mobileNo: user.mobileNo,
+      email: user.email,
+      aadharNo: user.aadharNo,
+      address: user.address,
+      feeAmount: user.feeAmount,
+      joinDate: user.joinDate,
+      // status_id: selectedStatus ? selectedStatus.id : null,
     };
     await addUser(postData);
     navigate("/allusers");
   };
 
-  useEffect(() => {
-    getStatusData();
-  }, []);
+  // useEffect(() => {
+  //   getStatusData();
+  // }, []);
 
-  const getStatusData = async () => {
-    try {
-      let response = await getStatusMenu();
-      setStatusMenu(
-        response.data.map((item) => ({
-          id: item.id,
-          label: item.status,
-        }))
-      );
-    } catch (error) {
-      console.error("Error fetching status dropdown:", error);
-    }
-  };
+  // const getStatusData = async () => {
+  //   try {
+  //     let response = await getStatusMenu();
+  //     setStatusMenu(
+  //       response.data.map((item) => ({
+  //         id: item.id,
+  //         label: item.status,
+  //       }))
+  //     );
+  //   } catch (error) {
+  //     console.error("Error fetching status dropdown:", error);
+  //   }
+  // };
 
   return (
     <Container>
@@ -155,22 +168,42 @@ const AddUser = () => {
         <Input required onChange={onValueChange} name="name" />
         {errors.name && <Typography color="error">{errors.name}</Typography>}
       </StyledFormControl>
-      <StyledFormControl error={!!errors.email_id}>
+      <StyledFormControl error={!!errors.fatherName}>
+        <InputLabel>Father Name</InputLabel>
+        <Input required onChange={onValueChange} name="fatherName" />
+        {errors.fatherName && <Typography color="error">{errors.fatherName}</Typography>}
+      </StyledFormControl>
+      <StyledFormControl error={!!errors.mobileNo}>
+        <InputLabel>Mobile Number</InputLabel>
+        <Input required onChange={onValueChange} name="mobileNo" />
+        {errors.mobileNo && <Typography color="error">{errors.mobileNo}</Typography>}
+      </StyledFormControl>
+      <StyledFormControl error={!!errors.email}>
         <InputLabel>Email</InputLabel>
-        <Input required onChange={onValueChange} name="email_id" />
-        {errors.email_id && <Typography color="error">{errors.email_id}</Typography>}
+        <Input required onChange={onValueChange} name="email" />
+        {errors.email && <Typography color="error">{errors.email}</Typography>}
       </StyledFormControl>
-      <StyledFormControl error={!!errors.phone}>
-        <InputLabel>Phone</InputLabel>
-        <Input required onChange={onValueChange} name="phone" />
-        {errors.phone && <Typography color="error">{errors.phone}</Typography>}
+      <StyledFormControl error={!!errors.aadharNo}>
+        <InputLabel>Aadhar Number</InputLabel>
+        <Input required onChange={onValueChange} name="aadharNo" />
+        {errors.aadharNo && <Typography color="error">{errors.aadharNo}</Typography>}
       </StyledFormControl>
-      <StyledFormControl error={!!errors.date}>
-        <InputLabel>Date/Time</InputLabel>
-        <Input required type="date" value={user.date || " "} onChange={onDateChange} name="date" />
-        {errors.date && <Typography color="error">{errors.date}</Typography>}
+      <StyledFormControl error={!!errors.address}>
+        <InputLabel>Address</InputLabel>
+        <Input required onChange={onValueChange} name="address" />
+        {errors.address && <Typography color="error">{errors.address}</Typography>}
       </StyledFormControl>
-      <StyledFormControl error={!!errors.status}>
+      <StyledFormControl error={!!errors.feeAmount}>
+        <InputLabel>Fee Amount</InputLabel>
+        <Input required onChange={onValueChange} name="feeAmount" />
+        {errors.feeAmount && <Typography color="error">{errors.feeAmount}</Typography>}
+      </StyledFormControl>
+      <StyledFormControl error={!!errors.joinDate}>
+        <InputLabel>Joining Date</InputLabel>
+        <Input required type="date" value={user.joinDate || " "} onChange={onDateChange} name="joinDate" />
+        {errors.joinDate && <Typography color="error">{errors.joinDate}</Typography>}
+      </StyledFormControl>
+      {/* <StyledFormControl error={!!errors.status}>
         <Autocomplete
           disablePortal
           margin="normal"
@@ -180,9 +213,7 @@ const AddUser = () => {
           size="small"
           options={statusMenu}
           value={selectedStatus}
-          onChange={(e, value) => {
-            setSelectedStatus(value);
-          }}
+          onChange={(e, value) => setSelectedStatus(value)}
           getOptionLabel={(value) => value.label}
           sx={{ width: "100%", mt: 2, mb: 1 }}
           renderInput={(params) => (
@@ -190,7 +221,7 @@ const AddUser = () => {
           )}
         />
         {errors.status && <Typography color="error">{errors.status}</Typography>}
-      </StyledFormControl>
+      </StyledFormControl> */}
       <SubmitButton variant="contained" onClick={AddUserDetails}>
         Add Candidate
       </SubmitButton>

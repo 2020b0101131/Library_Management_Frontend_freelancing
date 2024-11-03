@@ -114,8 +114,8 @@ const UserProfile = () => {
   const getProfile = async () => {
     try {
       let response = await displayProfile();
-      setProfileInfo(response.data);
-      const profileData = response.data;
+      setProfileInfo(response?.data);
+      const profileData = response?.data;
       setUsername(profileData?.userProfile[0]?.name);
       setBio(profileData?.userProfile[0]?.bio);
       setEmail(profileData?.userProfile[0]?.email);
@@ -225,23 +225,23 @@ const UserProfile = () => {
         <StatsSection sx={{flexDirection:{xs:"column",sm:"row"}}}>
           <StatCard sx={{ background: 'linear-gradient(135deg, #66ccff, #0033cc)', color: "white",marginBottom:{xs:2,sm:0},width:{md:"15rem"} }}>
             <Typography variant="h6" style={{ fontWeight: 600 }}>{profileInfo?.statistics[0]?.interviews_conducted ?? "No data found"}</Typography>
-            <Typography variant="body2">Interviews Conducted</Typography>
+            <Typography variant="body2">Total Candidates</Typography>
           </StatCard>
           <StatCard sx={{ background: 'linear-gradient(135deg, #66ff66, #009900)', color: 'white',marginBottom:{xs:2,sm:0},width:{md:"15rem"} }}>
             <Typography variant="h6" style={{ fontWeight: 600 }}>{profileInfo?.statistics[0]?.selected_count ?? "No data found"}</Typography>
-            <Typography variant="body2">Selected Candidates</Typography>
+            <Typography variant="body2">Fee Paid</Typography>
           </StatCard>
           <StatCard sx={{ background: 'linear-gradient(135deg, #ffcc33, #b38b00)', color: "white",marginBottom:{xs:2,sm:0},width:{md:"15rem"} }}>
             <Typography variant="h6" style={{ fontWeight: 600 }}>{profileInfo?.statistics[0]?.pending_count ?? "No data found"}</Typography>
-            <Typography variant="body2">Pending Candidates</Typography>
+            <Typography variant="body2">Fee Pending</Typography>
           </StatCard>
           <StatCard sx={{ background: "linear-gradient(135deg, #ff4d4d, #b30000)", color: "white",marginBottom:{xs:2,sm:0},width:{md:"15rem"} }}>
             <Typography variant="h6" style={{ fontWeight: 600 }}>{profileInfo?.statistics[0]?.rejected_count ?? "No data found"}</Typography>
-            <Typography variant="body2">Rejected Candidates</Typography>
+            <Typography variant="body2">Suspended Candidates</Typography>
           </StatCard>
         </StatsSection>
 
-        <GraphSection style={{ background: 'linear-gradient(135deg, #e0f7fa, #f3e5f5)', padding: '30px', borderRadius: '15px', color: 'black' }}>
+        {/* <GraphSection style={{ background: 'linear-gradient(135deg, #e0f7fa, #f3e5f5)', padding: '30px', borderRadius: '15px', color: 'black' }}>
           <Typography variant="h6" style={{ fontWeight: 500 }}>
             Interviews Conducted Over Time
           </Typography>
@@ -253,7 +253,7 @@ const UserProfile = () => {
             <Legend />
             <Line type="monotone" dataKey="interviews" stroke="#8884d8" strokeWidth={2} />
           </LineChart>
-        </GraphSection>
+        </GraphSection> */}
       </ProfileContainer>
 
       {/* Edit Profile Modal */}
