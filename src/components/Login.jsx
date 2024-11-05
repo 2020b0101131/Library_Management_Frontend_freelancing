@@ -29,7 +29,7 @@ const Login = () => {
       setShowToast(true); // Show the toast
       if (backend_response.data.message === "Login Successful") {
         localStorage.setItem("token", backend_response.data.token);
-        setTimeout(() => navigate("/allusers"), 1000); // Navigate after 1 second
+        setTimeout(() => navigate("/adduser"), 1000); // Navigate after 1 second
       }
     } catch (error) {
       setToastMessage("Login failed. Please try again.");

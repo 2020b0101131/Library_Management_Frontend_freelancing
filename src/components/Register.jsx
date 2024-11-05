@@ -31,7 +31,7 @@ const Register = () => {
       });
       localStorage.setItem("token", response.data.token);
       alert("Registered Successfully");
-      navigate("/userprofile", { state: response.data });
+      navigate("/", { state: response.data });
     } catch (error) {
       console.log("Error while registering", error);
     } finally {
@@ -40,7 +40,7 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container px-3">
+    <div  className="register-container px-3 mt-5">
       <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
         <div className="container">
           <a className="navbar-brand" href="#page-top">
@@ -68,7 +68,7 @@ const Register = () => {
         </b>
       </marquee>
 
-      <div className="register-card">
+      <div  className="register-card mt-5">
         {loading && (
           <div className="text-center mb-4">
             <div className="spinner-border" role="status">
@@ -76,7 +76,7 @@ const Register = () => {
             </div>
           </div>
         )}
-        <h2 className="text-center mb-4">Create Your Account</h2>
+        <h2  className="text-center mb-4 mt-5">Create Your Account</h2>
         <form className="form">
           <div className="form-outline">
             <input

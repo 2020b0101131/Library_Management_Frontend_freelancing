@@ -79,7 +79,9 @@ export const deleteUser = async (id) => {
 // <======================Register/Login API======================>
 
 export const registerUser = async (data) => {
+  console.log("Testing Test")
   try {
+   
     return await axios.post(`${URL}/users/register`, data);
   } catch (error) {
     console.log("Error while registerUser", error);
