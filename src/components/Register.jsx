@@ -57,7 +57,7 @@ const Register = () => {
           </div>
         </div>
       </nav>
-      <marquee
+      {/* <marquee
         className="fixed-top"
         id="gfg"
         style={{ backgroundColor: "yellow", marginTop: "4rem" }}
@@ -66,7 +66,7 @@ const Register = () => {
           Notice: Due to high server traffic, registration may take a few
           moments. We appreciate your patience.
         </b>
-      </marquee>
+      </marquee> */}
 
       <div  className="register-card mt-5">
         {loading && (
