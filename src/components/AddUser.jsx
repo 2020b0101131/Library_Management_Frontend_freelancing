@@ -115,7 +115,7 @@ const AddUser = () => {
   };
 
   const AddUserDetails = async () => {
-    if (!validateForm()) return; // Prevent submission if validation fails
+    // if (!validateForm()) return; // Prevent submission if validation fails
 
     const postData = {
       name: user.name,
